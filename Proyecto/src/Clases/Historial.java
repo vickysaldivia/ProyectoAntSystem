@@ -4,33 +4,34 @@
  */
 package Clases;
 
+import edd.Ciudad;
 import edd.ListaSimple;
 
 
 public class Historial {
-   private ListaSimple<HistorialHormiga> hitorialHormigas;
-   private String caminoOptimo;
+   private ListaSimple<HistorialHormiga> historialHormigas;
+   private ListaSimple<Ciudad> caminoOptimo;
    private double distanciaOptima;
 
-    public Historial(ListaSimple<HistorialHormiga> hitorialHormigas, String caminoOptimo, double distanciaOptima) {
-        this.hitorialHormigas = hitorialHormigas;
-        this.caminoOptimo = caminoOptimo;
+    public Historial(ListaSimple<HistorialHormiga> hitorialHormigas, ListaSimple<Ciudad> caminoOptimo, double distanciaOptima) {
+        this.historialHormigas = hitorialHormigas;
+        this.caminoOptimo = new ListaSimple();
         this.distanciaOptima = distanciaOptima;
     }
 
-    public ListaSimple<HistorialHormiga> getHitorialHormigas() {
-        return hitorialHormigas;
+    public ListaSimple<HistorialHormiga> getHistorialHormigas() {
+        return historialHormigas;
     }
 
-    public void setHitorialHormigas(ListaSimple<HistorialHormiga> hitorialHormigas) {
-        this.hitorialHormigas = hitorialHormigas;
+    public void setHistorialHormigas(ListaSimple<HistorialHormiga> hitorialHormigas) {
+        this.historialHormigas = hitorialHormigas;
     }
 
-    public String getCaminoOptimo() {
+    public ListaSimple<Ciudad> getCaminoOptimo() {
         return caminoOptimo;
     }
 
-    public void setCaminoOptimo(String caminoOptimo) {
+    public void setCaminoOptimo(ListaSimple<Ciudad> caminoOptimo) {
         this.caminoOptimo = caminoOptimo;
     }
 

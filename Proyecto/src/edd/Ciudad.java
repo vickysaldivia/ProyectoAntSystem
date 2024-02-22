@@ -11,7 +11,7 @@ package edd;
  */
 public class Ciudad {
     private int value;
-    private ListaSimple aristas; //Contienen las aristas
+    private ListaSimple<Arista> aristas; //Contienen las aristas
 
     public Ciudad(int value) {
         this.value = value;
@@ -40,5 +40,19 @@ public class Ciudad {
     
     public void eliminarArista(Arista arista){
         aristas.DeleteByReference(arista);
+
+    }
+    
+    public Arista buscarArista (int numero){
+        for (int i = 0; i < this.aristas.getSize(); i++) {
+            Arista aristaActual = (Arista) this.aristas.GetData(i);
+            if(aristaActual.getDestino().getValue()==numero){
+                return aristaActual;
+            } 
+        
+        }
+        return null;
+    
     }
 }
+

@@ -48,7 +48,7 @@ public class Hormiga {
     }
     
     //Primitivas
-    public void visitarCiudad(Ciudad destino, int distancia){
+    public void visitarCiudad(Ciudad destino, double distancia){
         if(!this.visitado(destino)){
             this.setCiudadActual(destino);
             ciudadesRecorridas.Append(destino);

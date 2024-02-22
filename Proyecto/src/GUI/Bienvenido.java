@@ -46,21 +46,23 @@ public class Bienvenido extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Maku", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
-        jLabel1.setText("BIENVENIDOS");
+        jLabel1.setText("BIENVENIDO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(247, 250, 243));
-        jLabel2.setFont(new java.awt.Font("Maku", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ANT SYSTEM");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 100));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 70));
 
         Continuar.setBackground(new java.awt.Color(83, 26, 11));
+        Continuar.setFont(new java.awt.Font("Thonburi", 1, 18)); // NOI18N
         Continuar.setText("Continuar");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +72,7 @@ public class Bienvenido extends javax.swing.JFrame {
         jPanel1.add(Continuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 250, 40));
 
         jLabel5.setBackground(new java.awt.Color(247, 250, 243));
-        jLabel5.setFont(new java.awt.Font("Maku", 3, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Thonburi", 1, 9)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(83, 26, 11));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("INTEGRANTES DEL GRUPO: VICTORIA SALDIVIA - JONATHAN SARLI - GIAMPIERO BASTIDAS");

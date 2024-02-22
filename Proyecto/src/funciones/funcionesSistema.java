@@ -14,10 +14,12 @@ import edd.ListaSimple;
 public class funcionesSistema {
     
     //Funcion para inicializar hormigas
-    public ListaSimple<Hormiga> inicializarHormigas(int numHormigas){
+    public ListaSimple<Hormiga> inicializarHormigas(int numHormigas, Ciudad ciudadInicial){
         ListaSimple<Hormiga> listHormigas = new ListaSimple();
         for (int i = 0; i < numHormigas; i++) {
             Hormiga hormiga = new Hormiga();
+            hormiga.setCiudadActual(ciudadInicial);
+            hormiga.getCiudadesRecorridas().Append(ciudadInicial);
             listHormigas.Append(hormiga);
         }
         

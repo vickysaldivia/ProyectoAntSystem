@@ -39,11 +39,11 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        CiudadesDisponibles = new javax.swing.JComboBox<>();
         Volver = new javax.swing.JButton();
         EliminarCiudad = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        CiudadesDisponibles = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -52,33 +52,21 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(241, 246, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Maku", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Seleccione la ciudad a eliminar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Maku", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Thonburi", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(83, 26, 11));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("ELIMINAR CIUDAD");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, 80));
-
-        jLabel3.setFont(new java.awt.Font("Maku", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(83, 26, 11));
-        jLabel3.setText("CIUDAD:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 40));
-
-        CiudadesDisponibles.setBackground(new java.awt.Color(83, 26, 11));
-        CiudadesDisponibles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CiudadesDisponiblesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CiudadesDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 80));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
+        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +76,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
+        EliminarCiudad.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         EliminarCiudad.setText("Eliminar");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,15 +88,36 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(241, 246, 240));
         jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(83, 26, 11), 2, true), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(83, 26, 11), java.awt.Color.white)));
 
+        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel3.setText("CIUDAD:");
+
+        CiudadesDisponibles.setBackground(new java.awt.Color(83, 26, 11));
+        CiudadesDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CiudadesDisponiblesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CiudadesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 92, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CiudadesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 290, 100));
@@ -134,15 +144,19 @@ public class EliminarCiudad extends javax.swing.JFrame {
 
     private void EliminarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCiudadActionPerformed
         // TODO add your handling code here:
-        //NO AGARRA
-        if(GrafoSimulacion.getCiudad(this.CiudadesDisponibles.getSelectedItem()) !=  null){
-            int result = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea eliminar la ciudad seleccionada?\n" + GrafoSimulacion.stringCiudad((int) this.CiudadesDisponibles.getSelectedItem()), "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
-            if(result == JOptionPane.YES_OPTION){
-                GrafoSimulacion.eliminarCiudad((int) this.CiudadesDisponibles.getSelectedItem());
-                
-                CiudadesDisponibles.removeAllItems();
-                re.RellenarCombos(NumCiudades, this.CiudadesDisponibles);
+        if(GrafoSimulacion.getCiudades().getSize() >= 4){
+            if(GrafoSimulacion.getCiudad((int) CiudadesDisponibles.getSelectedItem()) !=  null){
+                int result = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea eliminar la ciudad seleccionada?\n" + GrafoSimulacion.stringCiudad((int) this.CiudadesDisponibles.getSelectedItem()), "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+                if(result == JOptionPane.YES_OPTION){
+                    GrafoSimulacion.eliminarCiudad((int) this.CiudadesDisponibles.getSelectedItem());
+                    
+                    CiudadesDisponibles.removeAllItems();
+                    re.RellenarCombos(NumCiudades, this.CiudadesDisponibles);
+                }
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "La simulación debe permanecer con al menos 4 ciudades.");
         }
     }//GEN-LAST:event_EliminarCiudadActionPerformed
 
