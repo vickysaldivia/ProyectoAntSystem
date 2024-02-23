@@ -4,6 +4,15 @@
  */
 package GUI;
 
+import Clases.Hormiga;
+import static GUI.Menu.GrafoSimulacion;
+import funciones.FuncionRellenarCombos;
+import Clases.Sistema;
+import Clases.Sistema2;
+import edd.Ciudad;
+import edd.ListaSimple;
+import funciones.funcionesSistema;
+import javax.swing.JOptionPane;
 /**
  *
  * @author vickysaldivia
@@ -13,8 +22,15 @@ public class NuevaSimulacion extends javax.swing.JFrame {
     /**
      * Creates new form NuevaSimulacion
      */
+    
+    FuncionRellenarCombos re = new FuncionRellenarCombos();
+    funcionesSistema funcsis = new funcionesSistema();
     public NuevaSimulacion() {
+        
         initComponents();
+        re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), CiudadInicial);
+        re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), CiudadFinal);
+        this.Reiniciar.setEnabled(false);
     }
 
     /**
@@ -27,41 +43,423 @@ public class NuevaSimulacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Historial = new javax.swing.JTextArea();
+        Beta = new javax.swing.JTextField();
+        Alfa = new javax.swing.JTextField();
+        Rho = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        CiudadFinal = new javax.swing.JComboBox<>();
+        CiudadInicial = new javax.swing.JComboBox<>();
+        CantidadCiclos = new javax.swing.JTextField();
+        CantidadHormigas = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        Volver = new javax.swing.JButton();
+        Iniciar = new javax.swing.JButton();
+        Reiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(83, 26, 11));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(241, 246, 240));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel1.setText("NUEVA SIMULACIÓN");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        Historial.setBackground(new java.awt.Color(234, 239, 233));
+        Historial.setColumns(20);
+        Historial.setFont(new java.awt.Font("Thonburi", 0, 14)); // NOI18N
+        Historial.setForeground(new java.awt.Color(83, 26, 11));
+        Historial.setRows(5);
+        Historial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(83, 26, 11), java.awt.Color.white));
+        Historial.setFocusable(false);
+        jScrollPane1.setViewportView(Historial);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 320, 240));
+
+        Beta.setBackground(new java.awt.Color(255, 255, 255));
+        Beta.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Beta.setForeground(new java.awt.Color(83, 26, 11));
+        Beta.setText("1");
+        Beta.setToolTipText("Se muestra el recomendado.");
+        Beta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        Beta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BetaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+        Beta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BetaKeyTyped(evt);
+            }
+        });
+        jPanel2.add(Beta, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 60, 30));
+
+        Alfa.setBackground(new java.awt.Color(255, 255, 255));
+        Alfa.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Alfa.setForeground(new java.awt.Color(83, 26, 11));
+        Alfa.setText("2");
+        Alfa.setToolTipText("Se muestra el recomendado.");
+        Alfa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        Alfa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlfaActionPerformed(evt);
+            }
+        });
+        Alfa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AlfaKeyTyped(evt);
+            }
+        });
+        jPanel2.add(Alfa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 60, 30));
+
+        Rho.setBackground(new java.awt.Color(255, 255, 255));
+        Rho.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Rho.setForeground(new java.awt.Color(83, 26, 11));
+        Rho.setText("0.5");
+        Rho.setToolTipText("<html>Se muestra el recomendado.<p>Este valor solo se encuentra en el intervalo [0,1)");
+        Rho.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        Rho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RhoActionPerformed(evt);
+            }
+        });
+        Rho.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RhoKeyTyped(evt);
+            }
+        });
+        jPanel2.add(Rho, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 60, 30));
+
+        jLabel5.setBackground(new java.awt.Color(83, 26, 11));
+        jLabel5.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("<html>Grado de<p>evaporación:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 100, -1));
+
+        jLabel7.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("CICLOS:");
+        jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 60, 20));
+
+        jLabel4.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("<html>Visibilidad de<p>las ciudades:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 180, -1));
+
+        jLabel2.setBackground(new java.awt.Color(241, 246, 240));
+        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("VALORES REQUERIDOS:");
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        jLabel2.setOpaque(true);
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 200, 40));
+
+        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("<html>Importancia de<p>feromonas:");
+        jLabel3.setFocusable(false);
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 170, -1));
+
+        jLabel6.setBackground(new java.awt.Color(241, 246, 240));
+        jLabel6.setFont(new java.awt.Font("Thonburi", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        jLabel6.setOpaque(true);
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 200, 150));
+
+        jLabel9.setFont(new java.awt.Font("Thonburi", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("FINAL:");
+        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 60, 20));
+
+        jLabel10.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("HORMIGAS:");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 80, -1));
+
+        jLabel11.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("CIUDADES");
+        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 80, -1));
+
+        jLabel12.setFont(new java.awt.Font("Thonburi", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(83, 26, 11));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("INICIAL:");
+        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 60, 20));
+
+        CiudadFinal.setBackground(new java.awt.Color(83, 26, 11));
+        CiudadFinal.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CiudadFinal.setMaximumRowCount(20);
+        CiudadFinal.setToolTipText("");
+        CiudadFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CiudadFinalActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CiudadFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 60, -1));
+
+        CiudadInicial.setBackground(new java.awt.Color(83, 26, 11));
+        CiudadInicial.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CiudadInicial.setMaximumRowCount(20);
+        CiudadInicial.setToolTipText("");
+        CiudadInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CiudadInicialActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CiudadInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 60, -1));
+
+        CantidadCiclos.setBackground(new java.awt.Color(255, 255, 255));
+        CantidadCiclos.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CantidadCiclos.setForeground(new java.awt.Color(83, 26, 11));
+        CantidadCiclos.setText("3");
+        CantidadCiclos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        CantidadCiclos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CantidadCiclosActionPerformed(evt);
+            }
+        });
+        CantidadCiclos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantidadCiclosKeyTyped(evt);
+            }
+        });
+        jPanel2.add(CantidadCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 60, -1));
+
+        CantidadHormigas.setBackground(new java.awt.Color(255, 255, 255));
+        CantidadHormigas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CantidadHormigas.setForeground(new java.awt.Color(83, 26, 11));
+        CantidadHormigas.setText("3");
+        CantidadHormigas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        CantidadHormigas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantidadHormigasKeyTyped(evt);
+            }
+        });
+        jPanel2.add(CantidadHormigas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 80, -1));
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(234, 239, 233));
+        jTextField1.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(83, 26, 11));
+        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        jTextField1.setFocusable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 220, 350));
+
+        Volver.setBackground(new java.awt.Color(83, 26, 11));
+        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, -1));
+
+        Iniciar.setBackground(new java.awt.Color(83, 26, 11));
+        Iniciar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Iniciar.setText("Iniciar");
+        Iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 100, -1));
+
+        Reiniciar.setBackground(new java.awt.Color(83, 26, 11));
+        Reiniciar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Reiniciar.setText("Reiniciar");
+        Reiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReiniciarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 100, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
         // TODO add your handling code here:
-        Menu VentanaMenu = new Menu(); 
+        Ciudad ciudadInicial = GrafoSimulacion.getCiudad((int) CiudadInicial.getSelectedItem());
+        Ciudad ciudadFinal = GrafoSimulacion.getCiudad((int) CiudadFinal.getSelectedItem());
+        if(!CantidadHormigas.getText().trim().isBlank() || !CantidadCiclos.getText().trim().isBlank()){
+            if (ciudadInicial != ciudadFinal){
+                this.Reiniciar.setEnabled(false);
+                int ciclos = Integer.parseInt(CantidadCiclos.getText().toString());
+                
+                ListaSimple<Hormiga> hormigas = funcsis.inicializarHormigas(ciclos,ciudadInicial);
+                
+                
+                
+                
+                double alfa = Double.parseDouble(Alfa.getText());
+                double beta = Double.parseDouble(Beta.getText());
+                double rho = Double.parseDouble(Rho.getText());
+                
+                
+                Sistema2 sistema = new Sistema2(GrafoSimulacion, hormigas,ciclos, ciudadInicial, ciudadFinal, alfa, beta, rho);
+                funcsis.inicializarFeromonas(sistema);
+                sistema.simulacion();
+                
+//                for (int i = 0; i < ciclos; i++) {
+//                    sistema.iniciarCiclo(i);
+//                    this.Historial.setText(sistema.finalizarCiclo(i));
+//                    JOptionPane.showMessageDialog(null, "Fin del ciclo");
+//                    this.Reiniciar.setEnabled(true);
+//                    this.Iniciar.setEnabled(false);
+//                    sistema.getCaminoOptimo().Show();
+//                    sistema.reiniciarHormigas();
+//                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "La ciudad inicial y final deben ser distintas.");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Por favor llenar todos los campos de los valores requeridos.");
+        }
+    }//GEN-LAST:event_IniciarActionPerformed
+
+    private void ReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReiniciarActionPerformed
+        // TODO add your handling code here:
+        this.Historial.setText("");
+        this.Iniciar.setEnabled(true);
+    }//GEN-LAST:event_ReiniciarActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+        Menu VentanaMenu = new Menu();
         this.setVisible(false);
         VentanaMenu.setLocationRelativeTo(null);
         VentanaMenu.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void CiudadInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CiudadInicialActionPerformed
+
+    private void CiudadFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CiudadFinalActionPerformed
+
+    private void AlfaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlfaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlfaActionPerformed
+
+    private void BetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BetaActionPerformed
+
+    private void RhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RhoActionPerformed
+
+    private void AlfaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlfaKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key == 46 || key >=48 && key <= 57;
+        if(!numero){
+            evt.consume();
+        }
+    }//GEN-LAST:event_AlfaKeyTyped
+
+    private void BetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BetaKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key == 46 || key >=48 && key <= 57;
+        if(!numero){
+            evt.consume();
+        }
+    }//GEN-LAST:event_BetaKeyTyped
+
+    private void RhoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RhoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key == 46 || key >=48 && key <= 57;
+        if(!numero){
+            evt.consume();
+        }
+    }//GEN-LAST:event_RhoKeyTyped
+
+    private void CantidadHormigasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadHormigasKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key >=48 && key <= 57;
+        if(!numero){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CantidadHormigasKeyTyped
+
+    private void CantidadCiclosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadCiclosKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key == 46 || key >=48 && key <= 57;
+        if(!numero){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CantidadCiclosKeyTyped
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void CantidadCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantidadCiclosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CantidadCiclosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +497,31 @@ public class NuevaSimulacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField Alfa;
+    private javax.swing.JTextField Beta;
+    private javax.swing.JTextField CantidadCiclos;
+    private javax.swing.JTextField CantidadHormigas;
+    private javax.swing.JComboBox<String> CiudadFinal;
+    private javax.swing.JComboBox<String> CiudadInicial;
+    private javax.swing.JTextArea Historial;
+    private javax.swing.JButton Iniciar;
+    private javax.swing.JButton Reiniciar;
+    private javax.swing.JTextField Rho;
+    private javax.swing.JButton Volver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

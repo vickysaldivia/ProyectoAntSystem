@@ -48,9 +48,9 @@ public class Grafo {
             for (int j = 0; j < ciudad.getAristas().getSize(); j++) {
                 System.out.println("ARISTAS");
                 Arista arista = (Arista) ciudad.getAristas().GetData(j);
-                System.out.println("Origen:" + arista.getOrigen().getValue());
-                System.out.println("Destino:" + arista.getDestino().getValue());
-                System.out.println("Distancia:" + arista.getDistancia());
+                System.out.println("Origen: " + arista.getOrigen().getValue());
+                System.out.println("\nDestino: " + arista.getDestino().getValue());
+                System.out.println("\nDistancia: " + arista.getDistancia());
                 
             }
             System.out.println("--------");
@@ -64,9 +64,9 @@ public class Grafo {
         System.out.println("\nCONEXIONES:");
         for (int i = 0; i < ciudad.getAristas().getSize(); i++) {
             Arista arista = (Arista) ciudad.getAristas().GetData(i);
-            infoCiudad += "\n" + String.valueOf(i+1) + ") Origen:" + String.valueOf(arista.getOrigen().getValue());
-            infoCiudad += "Destino" + String.valueOf(arista.getDestino().getValue());
-            infoCiudad += "Distancia:" + String.valueOf(arista.getDistancia());
+            infoCiudad += "\nOrigen: " + String.valueOf(arista.getOrigen().getValue());
+            infoCiudad += "\nDestino: " + String.valueOf(arista.getDestino().getValue());
+            infoCiudad += "\nDistancia: " + String.valueOf(arista.getDistancia());
         }
         return infoCiudad;
     }
@@ -132,6 +132,11 @@ public class Grafo {
     public void eliminarCiudad (int numCiudad){
         Ciudad ciudadEliminar = this.getCiudad(numCiudad);
         if(ciudadEliminar != null){
+            for (int i = 0; i < ciudadEliminar.getAristas().getSize(); i++) {
+                Arista arista = (Arista) ciudadEliminar.getAristas().GetData(i);
+                int ciudadDestino = arista.getDestino().getValue();
+                this.eliminarArista(numCiudad, ciudadDestino);
+            }
             ciudades.DeleteByReference(ciudadEliminar);
             
             
@@ -169,7 +174,7 @@ public class Grafo {
             Ciudad ciudad = (Ciudad) ciudades.GetData(i);
             for (int j = 0; j < ciudad.getAristas().getSize();j++) {
                 Arista arista = (Arista) ciudad.getAristas().GetData(j);
-                sb.append(arista.getOrigen().getValue()).append(" ,").append(arista.getDestino().getValue()).append(" ,").append(arista.getDistancia()).append("\n");
+                sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n");
             }
         }
         return sb.toString();

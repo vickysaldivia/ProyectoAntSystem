@@ -152,12 +152,14 @@ public class ListaSimple<T> {
     
     public void Show(){
         if(!isEmpty()){
+            String list = "";
             Nodo aux = this.pFirst;
             for (int i = 0; i < this.size; i++) {
                 String info = aux.getData().toString();
-                System.out.println(info + "\n");
+                list += info + ", ";  
                 aux = aux.getpNext();
             }
+            System.out.println(list);
         }
     }
     

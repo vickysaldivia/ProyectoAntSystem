@@ -17,7 +17,7 @@ public class FuncionRellenarCombos {
             String parts[] = ciudades.split(",");
 
             for (String ciudad : parts) {
-                combo.addItem(ciudad);
+                combo.addItem(Integer.parseInt(ciudad));
             }
         }
     }

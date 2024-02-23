@@ -52,6 +52,11 @@ public class Arista {
         this.feromonas = feromonas;
     }
 
+    @Override
+    public String toString() {
+        return "Arista{" + "origen=" + origen.toString()+ ", destino=" + destino .toString()+ ", distancia=" + distancia + ", feromonas=" + feromonas + '}';
+    }
+
     
     
 }

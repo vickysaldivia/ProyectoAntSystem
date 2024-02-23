@@ -53,6 +53,7 @@ public class Menu extends javax.swing.JFrame {
         Guardar = new javax.swing.JButton();
         AgregarCiudad3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         EliminarGrafoCargado = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
@@ -65,12 +66,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(241, 246, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Maku", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
         jLabel1.setText("Disponibles:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
+        EliminarCiudad.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         EliminarCiudad.setText("Eliminar Ciudad");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,13 +82,14 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(EliminarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 130, -1));
 
         jLabel2.setBackground(new java.awt.Color(241, 246, 240));
-        jLabel2.setFont(new java.awt.Font("Maku", 1, 50)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 50)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MENÚ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 220, 70));
 
         MostrarGrafo.setBackground(new java.awt.Color(83, 26, 11));
+        MostrarGrafo.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,14 +109,15 @@ public class Menu extends javax.swing.JFrame {
                 PantallaCiudadesActionPerformed(evt);
             }
         });
-        jPanel1.add(PantallaCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 40, 30));
+        jPanel1.add(PantallaCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 40, 30));
 
-        jLabel3.setFont(new java.awt.Font("Maku", 1, 30)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setText("CIUDADES");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 130, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 130, -1));
 
         NuevaSimulacion.setBackground(new java.awt.Color(83, 26, 11));
+        NuevaSimulacion.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         NuevaSimulacion.setText("Nueva Simulación");
         NuevaSimulacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +130,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 280, 20));
 
         CargarGrafoPreexistente.setBackground(new java.awt.Color(83, 26, 11));
+        CargarGrafoPreexistente.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         CargarGrafoPreexistente.setText("Cargar Grafo Preexistente");
         CargarGrafoPreexistente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +140,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(CargarGrafoPreexistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 240, 30));
 
         Guardar.setBackground(new java.awt.Color(83, 26, 11));
+        Guardar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +150,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 100, -1));
 
         AgregarCiudad3.setBackground(new java.awt.Color(83, 26, 11));
+        AgregarCiudad3.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         AgregarCiudad3.setText("Agregar Ciudad");
         AgregarCiudad3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +168,17 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, -1));
 
+        jButton2.setBackground(new java.awt.Color(83, 26, 11));
+        jButton2.setText("↵");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 30, -1));
+
         EliminarGrafoCargado.setBackground(new java.awt.Color(83, 26, 11));
+        EliminarGrafoCargado.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         EliminarGrafoCargado.setText("Eliminar Grafo Cargado");
         EliminarGrafoCargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,6 +325,7 @@ public class Menu extends javax.swing.JFrame {
                StringTXT.eliminarArchivo("GrafoSimulacion.txt");
                GrafoSimulacion.emptyGrafo();
                JOptionPane.showMessageDialog(null, "Datos eliminados exitosamente");
+               this.PantallaCiudades.setText(String.valueOf(GrafoSimulacion.getCiudades().getSize()));
             }
         }
         else{
@@ -315,6 +333,15 @@ public class Menu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_EliminarGrafoCargadoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Bienvenido VentanaBienvenido = new Bienvenido();
+        this.setVisible(false);
+        VentanaBienvenido.setLocationRelativeTo(null);
+        VentanaBienvenido.setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,6 +403,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton NuevaSimulacion;
     private javax.swing.JTextField PantallaCiudades;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

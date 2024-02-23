@@ -56,16 +56,16 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(247, 250, 243));
-        jLabel2.setFont(new java.awt.Font("Maku", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CARGAR GRAFO");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 420, 60));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 420, 50));
 
         jLabel1.setBackground(new java.awt.Color(247, 250, 243));
-        jLabel1.setFont(new java.awt.Font("Maku", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BUSCAR ARCHIVO TXT");
@@ -75,6 +75,7 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
 
         Fichero.setEditable(false);
         Fichero.setBackground(new java.awt.Color(241, 246, 240));
+        Fichero.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Fichero.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(83, 26, 11), 2), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(255, 255, 255), java.awt.Color.white)));
         Fichero.setFocusable(false);
         Fichero.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +86,7 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(Fichero, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 250, -1));
 
         BuscarArchivo.setBackground(new java.awt.Color(83, 26, 11));
+        BuscarArchivo.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         BuscarArchivo.setText("Buscar");
         BuscarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
 
         TXT_String.setBackground(new java.awt.Color(241, 246, 240));
         TXT_String.setColumns(20);
+        TXT_String.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         TXT_String.setRows(5);
         TXT_String.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(83, 26, 11), 2), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white)));
         TXT_String.setFocusable(false);
@@ -103,6 +106,7 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 260, 120));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
+        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +116,16 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 40));
 
         CargarTXT.setBackground(new java.awt.Color(83, 26, 11));
+        CargarTXT.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         CargarTXT.setText("Cargar");
         CargarTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CargarTXTActionPerformed(evt);
+            }
+        });
+        CargarTXT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CargarTXTKeyPressed(evt);
             }
         });
         jPanel1.add(CargarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, 60));
@@ -193,7 +203,15 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
     private void CargarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarTXTActionPerformed
          VentanaMenu.GrafoSimulacion = this.func.convertString(TXT_String.getText());
          JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente" + "\n"+ "Ciudades actuales: " + VentanaMenu.GrafoSimulacion.getCiudades().getSize());
+         Menu VentanaMenu = new Menu(); 
+        this.setVisible(false);
+        VentanaMenu.setLocationRelativeTo(null);
+        VentanaMenu.setVisible(true);
     }//GEN-LAST:event_CargarTXTActionPerformed
+
+    private void CargarTXTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CargarTXTKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CargarTXTKeyPressed
 
     /**
      * @param args the command line arguments
