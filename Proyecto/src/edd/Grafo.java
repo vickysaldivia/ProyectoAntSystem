@@ -174,7 +174,7 @@ public class Grafo {
             Ciudad ciudad = (Ciudad) ciudades.GetData(i);
             for (int j = 0; j < ciudad.getAristas().getSize();j++) {
                 Arista arista = (Arista) ciudad.getAristas().GetData(j);
-                sb.append(arista.getOrigen().getValue()).append(" ,").append(arista.getDestino().getValue()).append(" ,").append(arista.getDistancia()).append("\n");
+                sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n");
             }
         }
         return sb.toString();

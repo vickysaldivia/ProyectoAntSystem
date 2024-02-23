@@ -10,6 +10,7 @@ import edd.Ciudad;
 import edd.Grafo;
 import edd.ListaSimple;
 import funciones.funcionesSistema;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 public class Sistema {
@@ -38,8 +39,9 @@ public class Sistema {
         this.beta = beta;
         this.q = q;
         this.caminoOptimo = new ListaSimple();
-        this.distanciaOptima = 0;
+        this.distanciaOptima = 1000;
         this.historial = new ListaSimple();
+        this.historialtemp = new ListaSimple();
     }
     
     //Getter and Setter
@@ -123,6 +125,7 @@ public class Sistema {
         this.distanciaOptima = distanciaOptima;
     }
     
+    
     //Primitivas
     
     public void inicializar(){
@@ -136,13 +139,17 @@ public class Sistema {
     public void moverHormiga(Hormiga hormiga){
         
         for (int i = 0; i < grafo.getCiudades().getSize(); i++) {
-            System.out.println(hormiga.getCiudadActual().getValue());
+            //System.out.println(hormiga.getCiudadActual().getValue());
             if(hormiga.getCiudadActual().getValue() != ciudadFinal.getValue()){
+                //System.out.println(hormiga.getCiudadActual().getValue());
                 ListaSimple ciudadesCandidatas = ciudadesCandidatas(hormiga);
                 if (ciudadesCandidatas.getSize() != 0) {
                     Arista arista = decidirProximaCiudad(this.obtenerProbabilidades(ciudadesCandidatas(hormiga)), this.ciudadesCandidatas(hormiga));
                     
+                    //ciudadesCandidatas(hormiga).Show();
+                    
                     hormiga.visitarCiudad(arista.getDestino(), arista.getDistancia());
+                    //System.out.println(hormiga.getCiudadActual().getValue());
                 }
                 break;
             }
@@ -166,30 +173,34 @@ public class Sistema {
                     ciudadesCandidatas.Append(ListAdy.GetData(i));
                 }
             }
-            ciudadesCandidatas.Show();
             return ciudadesCandidatas;
         }else{
             return null;
         }      
     }
     
+    //ERROR
     public ListaSimple obtenerProbabilidades(ListaSimple<Arista> ciudadesCandidatas){
-        ListaSimple<Double> ciudadesProbabilidades = new ListaSimple();
+        ListaSimple probsindividir = new ListaSimple();
+        
+        ListaSimple ciudadesProbabilidades = new ListaSimple();
+        
         double sumatoria = 0;
         
         for (int i = 0; i < ciudadesCandidatas.getSize(); i++) {
             Arista arista = ciudadesCandidatas.GetData(i);
+         
             double probabilidad = Math.pow(arista.getFeromonas(),alfa)*Math.pow(1/arista.getDistancia(), beta);
-            ciudadesProbabilidades.Append(probabilidad);
+            probsindividir.Append(probabilidad);
             sumatoria += probabilidad;
         }
         
-        for (int i = 0; i < ciudadesProbabilidades.getSize(); i++) {
-            double probabilidadCiudad = ciudadesProbabilidades.GetData(i)/sumatoria;
-            ciudadesProbabilidades.EditByPosition(i, probabilidadCiudad);
+        for (int i = 0; i < probsindividir.getSize(); i++) {
+            double probabilidadCiudad = ((double)probsindividir.GetData(i))/sumatoria;
+            ciudadesProbabilidades.Append(probabilidadCiudad);
+//            System.out.println(probabilidadCiudad);
             
         }
-        
 
       return ciudadesProbabilidades;  
     }
@@ -223,6 +234,7 @@ public class Sistema {
             }
         }
     }
+
     
     public void incrementarFeromonas(){
         for (int i = 0; i < hormigas.getSize(); i++) {
@@ -257,19 +269,21 @@ public class Sistema {
     }
 
     
+    
     public void iniciarCiclo(int i){
         funcionesSistema func = new funcionesSistema();
         JOptionPane.showMessageDialog(null, "INICIO DEL CICLO " + (i+1));
-        hormigas = func.inicializarHormigas(hormigas.getSize(), ciudadInico);
-        if(i == 0){
-            func.inicializarFeromonas(this);
-        }
-        
+        //hormigas = func.inicializarHormigas(hormigas.getSize(), ciudadInico);
+        //if(i == 0){
+        //    //func.inicializarFeromonas(this);
+        //}
+
         for (int j = 0; j < hormigas.getSize(); j++) {
             this.moverHormiga(hormigas.GetData(j));
+            hormigas.GetData(j).getCiudadesRecorridas().Show();
             HistorialHormiga historialHormiga = this.llenarHistorialHormiga(j+1, hormigas.GetData(j));
             
-            if(historialHormiga.getDistanciaRecorrida() > this.distanciaOptima){
+            if(historialHormiga.getDistanciaRecorrida() < this.distanciaOptima){
                 this.distanciaOptima = historialHormiga.getDistanciaRecorrida();
                 this.caminoOptimo = hormigas.GetData(j).getCiudadesRecorridas();
             }
@@ -280,22 +294,79 @@ public class Sistema {
         Historial newHistorial = new Historial(historialtemp, caminoOptimo, distanciaOptima);
         this.historial.Append(newHistorial);
         
-        this.evaporarFeromonas();
-        this.incrementarFeromonas();
+        //this.evaporarFeromonas();
+        //this.incrementarFeromonas();
         
     }
     
+        public void iniciarCiclo2(int i){
+        funcionesSistema func = new funcionesSistema();
+        JOptionPane.showMessageDialog(null, "INICIO DEL CICLO " + (i+1));
+        //hormigas = func.inicializarHormigas(hormigas.getSize(), ciudadInico);
+        //if(i == 0){
+        //    //func.inicializarFeromonas(this);
+        //}
+
+        for (int j = 0; j < hormigas.getSize(); j++) {
+            this.moverHormiga(hormigas.GetData(j));
+            
+            
+            HistorialHormiga historialHormiga = this.llenarHistorialHormiga(j+1, hormigas.GetData(j));
+            
+            if(historialHormiga.getDistanciaRecorrida() < this.distanciaOptima){
+                this.distanciaOptima = historialHormiga.getDistanciaRecorrida();
+                this.caminoOptimo = hormigas.GetData(j).getCiudadesRecorridas();
+            }
+            
+            this.historialtemp.Append(historialHormiga);
+        }
+        
+        Historial newHistorial = new Historial(historialtemp, caminoOptimo, distanciaOptima);
+        this.historial.Append(newHistorial);
+        
+        //this.evaporarFeromonas();
+        //this.incrementarFeromonas();
+        
+    }
+    
+    
+    
+    
+    
     public String finalizarCiclo(int i){
-        String resultadosSimulacion = "SIMULACIÓN - CICLO" + (i+1) + "\n";
-        resultadosSimulacion += "CANTIDAD DE HORMIGAS: " + String.valueOf(this.hormigas.getSize()) + "\nCANTIDAD DE CICLOS: " + String.valueOf(ciclos) + "\n";
+        String resultadosSimulacion = "SIMULACIÓN - CICLO (" + (i+1) + ")\n";
+        resultadosSimulacion += "CANTIDAD DE HORMIGAS: " + String.valueOf(this.hormigas.getSize()) + "\nCANTIDAD DE CICLOS: " + String.valueOf(ciclos) + "\n\n";
         String stringcaminoOptimo = "";
+        
+        DecimalFormat formato = new DecimalFormat("#.##");
+        
         for (int j = 0; j < this.caminoOptimo.getSize(); j++) {
             Ciudad ciudad = this.caminoOptimo.GetData(j);
-            stringcaminoOptimo += String.valueOf(ciudad.getValue());
+            stringcaminoOptimo += String.valueOf(ciudad.getValue()) + "-"; 
         }
-        resultadosSimulacion += "CAMINO MÁS ÓPTIMO: " + stringcaminoOptimo + "\n" + "DISTANCIA MÁS ÓPTIMA: " + String.valueOf(this.getDistanciaOptima());
         
+        
+        
+        resultadosSimulacion += "CAMINO MÁS ÓPTIMO: " + stringcaminoOptimo + "\nDISTANCIA MÁS ÓPTIMA: " + String.valueOf(this.getDistanciaOptima())+ "\n\n" + "RECORRIDO POR HORMIGA:\n";
+        for (int j = 0; j < this.historial.getSize(); j++) {
+            Historial historial = this.historial.GetData(j);
+            for (int k = 0; k < historial.getHistorialHormigas().getSize(); k++) {
+                HistorialHormiga historialHormiga = historial.getHistorialHormigas().GetData(k);
+                resultadosSimulacion += "HORMIGA (" + historialHormiga.getHormiga() + ") -- CAMINO: " + historialHormiga.getCaminoRecorrido() + " -- DISTANCIA RECORRIDA: " + historialHormiga.getDistanciaRecorrida() + "\n";
+                
+            }
+        }
+
         return resultadosSimulacion;
+    }
+    
+    public void reiniciarHormigas(){
+        for (int i = 0; i < this.hormigas.getSize(); i++) {
+           Hormiga hormigaActual = this.hormigas.GetData(i);
+           hormigaActual.setCiudadActual(this.ciudadInico);
+           hormigaActual.setDistanciaRecorrida(0);
+           hormigaActual.getCiudadesRecorridas().DeleteList();
+        }
     }
        
 }

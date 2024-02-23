@@ -8,8 +8,10 @@ import Clases.Hormiga;
 import static GUI.Menu.GrafoSimulacion;
 import funciones.FuncionRellenarCombos;
 import Clases.Sistema;
+import Clases.Sistema2;
 import edd.Ciudad;
 import edd.ListaSimple;
+import funciones.funcionesSistema;
 import javax.swing.JOptionPane;
 /**
  *
@@ -22,10 +24,13 @@ public class NuevaSimulacion extends javax.swing.JFrame {
      */
     
     FuncionRellenarCombos re = new FuncionRellenarCombos();
+    funcionesSistema funcsis = new funcionesSistema();
     public NuevaSimulacion() {
+        
         initComponents();
         re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), CiudadInicial);
         re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), CiudadFinal);
+        this.Reiniciar.setEnabled(false);
     }
 
     /**
@@ -81,7 +86,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         Historial.setBackground(new java.awt.Color(234, 239, 233));
         Historial.setColumns(20);
         Historial.setFont(new java.awt.Font("Thonburi", 0, 14)); // NOI18N
-        Historial.setForeground(new java.awt.Color(193, 193, 193));
+        Historial.setForeground(new java.awt.Color(83, 26, 11));
         Historial.setRows(5);
         Historial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(83, 26, 11), java.awt.Color.white));
         Historial.setFocusable(false);
@@ -92,7 +97,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         Beta.setBackground(new java.awt.Color(255, 255, 255));
         Beta.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Beta.setForeground(new java.awt.Color(83, 26, 11));
-        Beta.setText("2");
+        Beta.setText("1");
         Beta.setToolTipText("Se muestra el recomendado.");
         Beta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         Beta.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +245,13 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         CantidadCiclos.setBackground(new java.awt.Color(255, 255, 255));
         CantidadCiclos.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         CantidadCiclos.setForeground(new java.awt.Color(83, 26, 11));
+        CantidadCiclos.setText("3");
         CantidadCiclos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        CantidadCiclos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CantidadCiclosActionPerformed(evt);
+            }
+        });
         CantidadCiclos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CantidadCiclosKeyTyped(evt);
@@ -251,6 +262,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         CantidadHormigas.setBackground(new java.awt.Color(255, 255, 255));
         CantidadHormigas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         CantidadHormigas.setForeground(new java.awt.Color(83, 26, 11));
+        CantidadHormigas.setText("3");
         CantidadHormigas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         CantidadHormigas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -265,6 +277,11 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(83, 26, 11));
         jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         jTextField1.setFocusable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 220, 350));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
@@ -319,33 +336,48 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         Ciudad ciudadInicial = GrafoSimulacion.getCiudad((int) CiudadInicial.getSelectedItem());
         Ciudad ciudadFinal = GrafoSimulacion.getCiudad((int) CiudadFinal.getSelectedItem());
-        if (ciudadInicial != ciudadFinal){
-            ListaSimple<Hormiga> hormigas = new ListaSimple();
-            for (int i = 0; i < Integer.parseInt(CantidadHormigas.getText().toString()); i++) {
-                hormigas.Append(new Hormiga());
+        if(!CantidadHormigas.getText().trim().isBlank() || !CantidadCiclos.getText().trim().isBlank()){
+            if (ciudadInicial != ciudadFinal){
+                this.Reiniciar.setEnabled(false);
+                int ciclos = Integer.parseInt(CantidadCiclos.getText().toString());
+                
+                ListaSimple<Hormiga> hormigas = funcsis.inicializarHormigas(ciclos,ciudadInicial);
+                
+                
+                
+                
+                double alfa = Double.parseDouble(Alfa.getText());
+                double beta = Double.parseDouble(Beta.getText());
+                double rho = Double.parseDouble(Rho.getText());
+                
+                
+                Sistema2 sistema = new Sistema2(GrafoSimulacion, hormigas,ciclos, ciudadInicial, ciudadFinal, alfa, beta, rho);
+                funcsis.inicializarFeromonas(sistema);
+                sistema.simulacion();
+                
+//                for (int i = 0; i < ciclos; i++) {
+//                    sistema.iniciarCiclo(i);
+//                    this.Historial.setText(sistema.finalizarCiclo(i));
+//                    JOptionPane.showMessageDialog(null, "Fin del ciclo");
+//                    this.Reiniciar.setEnabled(true);
+//                    this.Iniciar.setEnabled(false);
+//                    sistema.getCaminoOptimo().Show();
+//                    sistema.reiniciarHormigas();
+//                }
             }
-            int ciclos = Integer.parseInt(CantidadCiclos.getText().toString());
-            
-            
-            double alfa = Double.parseDouble(Alfa.getText());
-            double beta = Double.parseDouble(Beta.getText());
-            double rho = Double.parseDouble(Rho.getText());
-            
-            Sistema Sistema = new Sistema(GrafoSimulacion, hormigas,ciclos, ciudadInicial, ciudadFinal, alfa, beta, rho);
-            for (int i = 0; i < ciclos; i++) {
-                Sistema.iniciarCiclo(i);
-                this.Historial.setText(Sistema.finalizarCiclo(i));
-                //llamar a funcion del grafo
-                JOptionPane.showMessageDialog(null, "Fin del ciclo");
+            else{
+                JOptionPane.showMessageDialog(null, "La ciudad inicial y final deben ser distintas.");
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "La ciudad inicial y final deben ser distintas.");
+            JOptionPane.showMessageDialog(null, "Por favor llenar todos los campos de los valores requeridos.");
         }
     }//GEN-LAST:event_IniciarActionPerformed
 
     private void ReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReiniciarActionPerformed
         // TODO add your handling code here:
+        this.Historial.setText("");
+        this.Iniciar.setEnabled(true);
     }//GEN-LAST:event_ReiniciarActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
@@ -420,6 +452,14 @@ public class NuevaSimulacion extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_CantidadCiclosKeyTyped
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void CantidadCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantidadCiclosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CantidadCiclosActionPerformed
 
     /**
      * @param args the command line arguments

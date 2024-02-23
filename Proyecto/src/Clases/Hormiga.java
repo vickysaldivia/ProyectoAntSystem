@@ -16,10 +16,10 @@ public class Hormiga {
     private Ciudad ciudadActual;
 
     //Constructor
-    public Hormiga() {
+    public Hormiga(Ciudad ciudad) {
         this.ciudadesRecorridas = new ListaSimple();
         this.distanciaRecorrida = 0;
-        this.ciudadActual = null;
+        this.ciudadActual = ciudad;
     }
     
     //Getter and Setter
@@ -68,4 +68,22 @@ public class Hormiga {
         }
         return false;
     }
+    
+    public boolean Search(int numCiudad){
+        for (int i = 0; i < this.ciudadesRecorridas.getSize(); i++) {
+           if(this.ciudadesRecorridas.GetData(i).getValue() == numCiudad){
+               return true;
+           }
+        }
+        return false;
+    
+    }
+
+    @Override
+    public String toString() {
+        return "Hormiga{" + "ciudadesRecorridas=" + ciudadesRecorridas.getSize() + ", distanciaRecorrida=" + distanciaRecorrida + ", ciudadActual=" + ciudadActual.getValue() + '}';
+    }
+
+    
+    
 }

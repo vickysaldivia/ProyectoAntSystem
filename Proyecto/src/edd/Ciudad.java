@@ -54,5 +54,12 @@ public class Ciudad {
         return null;
     
     }
+
+    @Override
+    public String toString() {
+        return "Ciudad{" + "value=" + value + ", aristas=" + aristas + '}';
+    }
+    
+    
 }
 

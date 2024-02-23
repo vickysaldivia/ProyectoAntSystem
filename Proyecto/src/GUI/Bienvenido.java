@@ -104,8 +104,14 @@ public class Bienvenido extends javax.swing.JFrame {
         try {
             newGrafo = func.cargaTXTAutomatica();
             if(newGrafo != null){
-                Menu.GrafoSimulacion = newGrafo;
-                JOptionPane.showMessageDialog(null, "Se ha cargado un archivo automáticamente");
+                int result = JOptionPane.showConfirmDialog(null, "Se ha encontrado un archivo previamente guardado.\n¿Desea cargarlo?", "CARGAR GRAFO", JOptionPane.YES_NO_OPTION);
+                if(result == JOptionPane.YES_OPTION){    
+                    Menu.GrafoSimulacion = newGrafo;
+                    JOptionPane.showMessageDialog(null, "Se ha cargado un archivo automáticamente");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "No se ha cargado el archivo encontrado");
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(Bienvenido.class.getName()).log(Level.SEVERE, null, ex);
