@@ -13,6 +13,13 @@ import edd.ListaSimple;
  */
 public class funcionAgregarCiudad {
 
+    /**
+     * Verifica si hay ciudades sin aristas en la lista de ciudades agregadas.
+     *
+     * @param ciudadesAgregadas Lista de ciudades agregadas.
+     * @return String con las ciudades sin aristas, o null si no hay ciudades
+     * sin aristas.
+     */
     public String verificarAristas(ListaSimple<Ciudad> ciudadesAgregadas){
         String string = "";
         for (int i = 0; i < ciudadesAgregadas.getSize(); i++) {

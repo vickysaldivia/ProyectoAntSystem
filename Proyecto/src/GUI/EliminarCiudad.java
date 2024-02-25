@@ -24,7 +24,6 @@ public class EliminarCiudad extends javax.swing.JFrame {
     public EliminarCiudad() {
         initComponents();
         re.RellenarCombos(NumCiudades, CiudadesDisponibles);
-        GrafoSimulacion.printCiudades();
     }
 
     /**
@@ -148,6 +147,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
             if(GrafoSimulacion.getCiudad((int) CiudadesDisponibles.getSelectedItem()) !=  null){
                 int result = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea eliminar la ciudad seleccionada?\n" + GrafoSimulacion.stringCiudad((int) this.CiudadesDisponibles.getSelectedItem()), "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
                 if(result == JOptionPane.YES_OPTION){
+                    
                     GrafoSimulacion.eliminarCiudad((int) this.CiudadesDisponibles.getSelectedItem());
                     
                     CiudadesDisponibles.removeAllItems();

@@ -5,31 +5,55 @@
 package edd;
 
 /**
- *
- * @author vickysaldivia
- */
+* Clase que representa un grafo como una lista de ciudades, donde cada
+* ciudad tiene una lista de aristas conectadas a otras ciudades.
+*
+* @author vickysaldivia
+*/
 public class Grafo {
     private ListaSimple<Ciudad> ciudades;
 
-    
+    /**
+    * Constructor por defecto de la clase Grafo. Inicializa la lista de ciudades.
+    */
     public Grafo() {
         this.ciudades = new ListaSimple();
     }
-
-    public ListaSimple getCiudades() {
+    
+    /**
+    * Devuelve la lista de ciudades del grafo.
+    *
+    * @return lista de ciudades.
+    */
+    public ListaSimple<Ciudad> getCiudades() {
         return ciudades;
     }
 
-    public void setCiudades(ListaSimple ciudades) {
+    /**
+    * Establece la lista de ciudades del grafo.
+    *
+    * @param ciudades lista de ciudades.
+    */
+    public void setCiudades(ListaSimple<Ciudad> ciudades) {
         this.ciudades = ciudades;
     }
     
     
-    
+    /**
+     * Añade una ciudad al grafo.
+     *
+     * @param ciudad ciudad a añadir.
+     */
     public void addCiudad(Ciudad ciudad){
         this.ciudades.Append(ciudad);
     }
     
+    /**
+     * Devuelve una ciudad a partir de su valor.
+     *
+     * @param numCiudad valor de la ciudad a buscar.
+     * @return ciudad encontrada o null en caso de no encontrarla.
+     */
     public Ciudad getCiudad(int numCiudad){
         for (int i = 0; i < this.ciudades.getSize(); i++) {
             Ciudad ciudad = (Ciudad) ciudades.GetData(i);
@@ -40,6 +64,9 @@ public class Grafo {
         return null; 
     }
     
+    /**
+    * Imprime por pantalla las ciudades y sus aristas.
+    */
     public void printCiudades(){
         for (int i = 0; i < this.ciudades.getSize(); i++) {
             Ciudad ciudad = this.ciudades.GetData(i);
@@ -57,11 +84,19 @@ public class Grafo {
             
             }
         }
+    
+    /**
+     * Devuelve una cadena de texto con la información de una ciudad y sus
+     * aristas.
+     *
+     * @param numCiudad valor de la ciudad a buscar.
+     * @return cadena de texto con la información de la ciudad y sus aristas.
+     */
     public String stringCiudad(int numCiudad){
         String infoCiudad = "";
         Ciudad ciudad = getCiudad(numCiudad);
         infoCiudad += "CIUDAD: "+ String.valueOf(numCiudad);
-        System.out.println("\nCONEXIONES:");
+        infoCiudad += "\n\nCONEXIONES:";
         for (int i = 0; i < ciudad.getAristas().getSize(); i++) {
             Arista arista = (Arista) ciudad.getAristas().GetData(i);
             infoCiudad += "\nOrigen: " + String.valueOf(arista.getOrigen().getValue());
@@ -71,34 +106,36 @@ public class Grafo {
         return infoCiudad;
     }
     
-    
+    /**
+     * Vacía el grafo, eliminando todas las ciudades y aristas.
+     */
     public void emptyGrafo(){
         this.ciudades = new ListaSimple();
     }
     
+    /**
+     * Añade una arista al grafo, conectando dos ciudades previamente agregadas.
+     *
+     * @param origen el valor de la ciudad origen de la arista.
+     * @param destino el valor de la ciudad destino de la arista.
+     * @param distancia la distancia de la arista.
+     */
     public void addArista(int origen, int destino, double distancia){
         Ciudad ciudadOrigen = this.getCiudad(origen);
         Ciudad ciudadDestino = this.getCiudad(destino);
         
         if(ciudadOrigen != null && ciudadDestino != null){
-            Arista newArista = new Arista(ciudadOrigen, ciudadDestino, distancia);
-            if(!ciudadOrigen.getAristas().Search(newArista)){
-                ciudadOrigen.getAristas().Append(newArista);
-                ciudadDestino.getAristas().Append(new Arista(ciudadDestino, ciudadOrigen, distancia));
-                this.sortAristaBurbuja(ciudadOrigen.getAristas());
-                this.sortAristaBurbuja(ciudadDestino.getAristas());
-                
-                System.out.println(ciudadOrigen.getValue() + "\n");
-                ciudadOrigen.getAristas().Show();
-                
-                System.out.println(ciudadDestino.getValue() + "\n");
-                ciudadDestino.getAristas().Show();
-            }
-        }
-        
-        
+            ciudadOrigen.getAristas().Append(new Arista(ciudadOrigen, ciudadDestino, distancia));
+            ciudadDestino.getAristas().Append(new Arista(ciudadDestino, ciudadOrigen, distancia)); 
+        } 
     }
     
+    /**
+     * Ordena una lista de aristas en orden ascendente según el valor del
+     * destino de la arista.
+     *
+     * @param Aristas la lista de aristas a ordenar.
+     */
     public void sortAristaBurbuja(ListaSimple Aristas) {
         if (Aristas.getpFirst() == null || Aristas.getpFirst().getpNext() == null) {
             // La lista está vacía o tiene un solo elemento, ya está ordenada
@@ -129,36 +166,58 @@ public class Grafo {
     }
 
     
+    /**
+     * Elimina una ciudad y todas las aristas que la conectan del grafo.
+     *
+     * @param numCiudad el valor de la ciudad a eliminar.
+     */
     public void eliminarCiudad (int numCiudad){
         Ciudad ciudadEliminar = this.getCiudad(numCiudad);
+        
         if(ciudadEliminar != null){
+            
             for (int i = 0; i < ciudadEliminar.getAristas().getSize(); i++) {
                 Arista arista = (Arista) ciudadEliminar.getAristas().GetData(i);
+                
                 int ciudadDestino = arista.getDestino().getValue();
                 this.eliminarArista(numCiudad, ciudadDestino);
             }
-            ciudades.DeleteByReference(ciudadEliminar);
+            for (int i = 0; i < this.getCiudades().getSize(); i++) {
+                if(this.getCiudades().GetData(i).getValue() == numCiudad){
+                    ciudades.DeleteByPosition(i);
+                }
+            }
             
-            
-        }
-    }
-    
-    public void eliminarArista(int origen, int destino){
-        Ciudad ciudadOrigen = this.getCiudad(origen);
-        Ciudad ciudadDestino = this.getCiudad(destino);
-        if(ciudadOrigen != null && ciudadDestino != null){
-            //COMO LA LISTA DEBERIA ESTAR ORDENADA
-            Arista newArista = (Arista) ciudadOrigen.getAristas().GetData(destino-1);
-            if(newArista.getDestino() == ciudadDestino){
-                ciudadOrigen.getAristas().DeleteByPosition(destino-1);
-                ciudadDestino.getAristas().DeleteByPosition(origen-1);
-            }  
+
         }
     }
     
     /**
+     * Elimina una arista del grafo.
      *
-     * @return
+     * @param origen el valor de la ciudad origen de la arista a eliminar.
+     * @param destino el valor de la ciudad destino de la arista a eliminar.
+     */
+    public void eliminarArista(int origen, int destino){
+        Ciudad ciudadEliminar = this.getCiudad(origen);
+        
+        Ciudad ciudadDestino = this.getCiudad(destino);
+        
+        if(ciudadEliminar != null && ciudadDestino != null){
+            
+            for (int i = 0; i < ciudadDestino.getAristas().getSize(); i++) {
+                Arista arista = ciudadDestino.getAristas().GetData(i);
+                if(arista.getDestino() == ciudadEliminar){
+                    ciudadDestino.getAristas().DeleteByPosition(i);
+                }
+                
+            }
+        }
+    }
+    
+    /**
+     * Transforma el grafo en una cadena.
+     * @return Cade a del grafo.
      */
     @Override
     public String toString() {
@@ -174,91 +233,97 @@ public class Grafo {
             Ciudad ciudad = (Ciudad) ciudades.GetData(i);
             for (int j = 0; j < ciudad.getAristas().getSize();j++) {
                 Arista arista = (Arista) ciudad.getAristas().GetData(j);
-                sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n");
+                if(ciudad.getValue() > arista.getDestino().getValue()){
+                    sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n").append(arista.getFeromonas());
+                }
             }
         }
         return sb.toString();
     }
     
-public String CiudadesToLista() {
-     String NumeroCiudades = "";
-     if (!this.ciudades.isEmpty()) {
-         Nodo aux = this.ciudades.getpFirst();
-         while(aux != null){
-             Ciudad ciudad = (Ciudad) aux.getData();
-             NumeroCiudades += String.valueOf(ciudad.getValue()) + ",";
-             aux = aux.getpNext(); 
+    /**
+     * Transforma las ciudades en una cadena mostrada como lista.
+     * @return Cadena de. valor de cada ciudad.
+     */
+    public String CiudadesToLista() {
+         String NumeroCiudades = "";
+         if (!this.ciudades.isEmpty()) {
+             Nodo aux = this.ciudades.getpFirst();
+             while(aux != null){
+                 Ciudad ciudad = (Ciudad) aux.getData();
+                 NumeroCiudades += String.valueOf(ciudad.getValue()) + ",";
+                 aux = aux.getpNext(); 
+             }
+             return NumeroCiudades;
          }
-         return NumeroCiudades;
-     }
-     return null;
-}
-
-    
-    //DFS, DFS RECURSIVO, DIJKSTRA
-    public ListaSimple dfs(int numeroCiudad) {
-        Ciudad ciudadInicio = getCiudad(numeroCiudad);
-        ListaSimple recorrido = new ListaSimple();
-        boolean[] visitados = new boolean[ciudades.getSize()];
-
-        if (ciudadInicio != null) {
-            dfsRecursivo(ciudadInicio, visitados, recorrido);
-        }
-
-        return recorrido;
+         return null;
     }
-    
-    private void dfsRecursivo(Ciudad ciudad, boolean[] visitados, ListaSimple recorrido) {
-        visitados[ciudad.getValue()] = true;
-        recorrido.Append(ciudad.getValue());
 
-        for (int i=0; i< ciudad.getAristas().getSize();i++) {
-            Arista arista = (Arista) ciudad.getAristas().GetData(i);
-            Ciudad adyacente = arista.getDestino();
-            if (!visitados[adyacente.getValue()]) {
-                dfsRecursivo(adyacente, visitados, recorrido);
-            }
-        }
-    }
-    
-    public int[] dijkstra(int inicio) {
-        int[] distancias = new int[ciudades.getSize()];
-        boolean[] visitados = new boolean[ciudades.getSize()];
-
-        for (int i = 0; i < ciudades.getSize(); i++) {
-            distancias[i] = Integer.MAX_VALUE;
-        }
-
-        distancias[inicio] = 0;
-
-        for (int i = 0; i < ciudades.getSize() - 1; i++) {
-            int ciudadActual = obtenerCiudadConMenorDistancia(distancias, visitados);
-            visitados[ciudadActual] = true;
-            Ciudad c = (Ciudad) ciudades.GetData(ciudadActual);
-            for (int j = 0; j < c.getAristas().getSize(); j++) {
-                Arista arista = (Arista) c.getAristas().GetData(j);
-                int ciudadDestino = arista.getDestino().getValue();
-                if (!visitados[ciudadDestino] && distancias[ciudadActual] != Integer.MAX_VALUE &&
-                        distancias[ciudadActual] + arista.getDistancia() < distancias[ciudadDestino]) {
-                    distancias[ciudadDestino] = distancias[ciudadActual] + (int)arista.getDistancia();
-                }
-                
-            }
-        }
-
-        return distancias;
-    }
-    
-    private int obtenerCiudadConMenorDistancia(int[] distancias, boolean[] visitados) {
-        int minDistancia = Integer.MAX_VALUE;
-        int minIndice = -1;
-        for (int i = 0; i < distancias.length; i++) {
-            if (!visitados[i] && distancias[i] <= minDistancia) {
-                minDistancia = distancias[i];
-                minIndice = i;
-            }
-        }
-        return minIndice;
-    }
+//    
+//    //DFS, DFS RECURSIVO, DIJKSTRA
+//    public ListaSimple dfs(int numeroCiudad) {
+//        Ciudad ciudadInicio = getCiudad(numeroCiudad);
+//        ListaSimple recorrido = new ListaSimple();
+//        boolean[] visitados = new boolean[ciudades.getSize()];
+//
+//        if (ciudadInicio != null) {
+//            dfsRecursivo(ciudadInicio, visitados, recorrido);
+//        }
+//
+//        return recorrido;
+//    }
+//    
+//    private void dfsRecursivo(Ciudad ciudad, boolean[] visitados, ListaSimple recorrido) {
+//        visitados[ciudad.getValue()] = true;
+//        recorrido.Append(ciudad.getValue());
+//
+//        for (int i=0; i< ciudad.getAristas().getSize();i++) {
+//            Arista arista = (Arista) ciudad.getAristas().GetData(i);
+//            Ciudad adyacente = arista.getDestino();
+//            if (!visitados[adyacente.getValue()]) {
+//                dfsRecursivo(adyacente, visitados, recorrido);
+//            }
+//        }
+//    }
+//    
+//    public int[] dijkstra(int inicio) {
+//        int[] distancias = new int[ciudades.getSize()];
+//        boolean[] visitados = new boolean[ciudades.getSize()];
+//
+//        for (int i = 0; i < ciudades.getSize(); i++) {
+//            distancias[i] = Integer.MAX_VALUE;
+//        }
+//
+//        distancias[inicio] = 0;
+//
+//        for (int i = 0; i < ciudades.getSize() - 1; i++) {
+//            int ciudadActual = obtenerCiudadConMenorDistancia(distancias, visitados);
+//            visitados[ciudadActual] = true;
+//            Ciudad c = (Ciudad) ciudades.GetData(ciudadActual);
+//            for (int j = 0; j < c.getAristas().getSize(); j++) {
+//                Arista arista = (Arista) c.getAristas().GetData(j);
+//                int ciudadDestino = arista.getDestino().getValue();
+//                if (!visitados[ciudadDestino] && distancias[ciudadActual] != Integer.MAX_VALUE &&
+//                        distancias[ciudadActual] + arista.getDistancia() < distancias[ciudadDestino]) {
+//                    distancias[ciudadDestino] = distancias[ciudadActual] + (int)arista.getDistancia();
+//                }
+//                
+//            }
+//        }
+//
+//        return distancias;
+//    }
+//    
+//    private int obtenerCiudadConMenorDistancia(int[] distancias, boolean[] visitados) {
+//        int minDistancia = Integer.MAX_VALUE;
+//        int minIndice = -1;
+//        for (int i = 0; i < distancias.length; i++) {
+//            if (!visitados[i] && distancias[i] <= minDistancia) {
+//                minDistancia = distancias[i];
+//                minIndice = i;
+//            }
+//        }
+//        return minIndice;
+//    }
 }
 

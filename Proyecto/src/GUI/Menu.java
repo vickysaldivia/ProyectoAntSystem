@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 
-
 /**
  *
  * @author vickysaldivia
@@ -18,6 +17,8 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     public static Grafo GrafoSimulacion = new Grafo();
     FuncionTXT StringTXT = new FuncionTXT();
+    
+    
     /**
      * Creates new form Menu
      */
@@ -219,7 +220,9 @@ public class Menu extends javax.swing.JFrame {
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         // TODO add your handling code here:
         if(GrafoSimulacion.getCiudades().getSize() >=4){
+
             MostrarGrafoInterfaz VentanaGrafo = new MostrarGrafoInterfaz(); 
+
             this.setVisible(false);
             VentanaGrafo.setLocationRelativeTo(null);
             VentanaGrafo.setVisible(true);

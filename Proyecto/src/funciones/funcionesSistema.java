@@ -5,16 +5,26 @@
 package funciones;
 
 import Clases.Hormiga;
-import Clases.Sistema;
 import Clases.Sistema2;
 import edd.Arista;
 import edd.Ciudad;
 import edd.ListaSimple;
 
-
+/**
+* Clase con funciones auxiliares para el sistema de hormigas.
+*
+* @author vickysaldivia
+*/
 public class funcionesSistema {
     
-    //Funcion para inicializar hormigas
+    /**
+    * Inicializa una lista de hormigas con el número dado de hormigas, cada una en la
+    * ciudad inicial dada.
+    *
+    * @param numHormigas  El número de hormigas a inicializar.
+    * @param ciudadInicial La ciudad inicial de cada hormiga.
+    * @return Una lista de hormigas inicializadas.
+    */
     public ListaSimple<Hormiga> inicializarHormigas(int numHormigas, Ciudad ciudadInicial){
         ListaSimple<Hormiga> listHormigas = new ListaSimple();
         for (int i = 0; i < numHormigas; i++) {
@@ -26,12 +36,13 @@ public class funcionesSistema {
         return listHormigas;
     }
     
-    //Funcion para inicializar feromonas
+    /**
+    * Inicializa las feromonas en todas las aristas del grafo con el valor dado.
+    *
+    * @param sistema El sistema de hormigas con el grafo donde inicializar las feromonas.
+    */
     public void inicializarFeromonas(Sistema2 sistema){
         int numCiudades = sistema.getGrafo().getCiudades().getSize();
-        
-//        System.out.println(numCiudades);
-//        System.out.println(1.0/numCiudades);
         for (int i = 0; i < numCiudades; i++) {
             Ciudad ciudadActual = (Ciudad) sistema.getGrafo().getCiudades().GetData(i);
             for (int j = 0; j < ciudadActual.getAristas().getSize(); j++) {

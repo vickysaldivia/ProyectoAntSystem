@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author vickysaldivia
  */
 public class AgregarCiudad extends javax.swing.JFrame {
-    Menu VentanaMenu = new Menu();
+
     
     /**
      * Creates new form Agregar_Ciudad
@@ -197,10 +197,12 @@ public class AgregarCiudad extends javax.swing.JFrame {
             Ciudad newCiudad =  new Ciudad(numCiudad);
             
             if(GrafoSimulacion.getCiudad(numCiudad) == null){
+                
                 GrafoSimulacion.addCiudad(newCiudad);
                 this.ciudadesAgregadas.Append(newCiudad);
                 ComboAristas.removeAllItems();
                 re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), ComboAristas);
+                
                 if(GrafoSimulacion.CiudadesToLista().length() >= 6){
                     this.AgregarAristas.setEnabled(true);
                     this.ComboAristas.setEnabled(true);
@@ -208,7 +210,7 @@ public class AgregarCiudad extends javax.swing.JFrame {
                 else{
                     JOptionPane.showMessageDialog(null, "Debe agregar al menos 4 ciudades.");
                 }
-                }
+            }
             else{
                 JOptionPane.showMessageDialog(null, "La ciudad ya se encuentra en la simulación.");
             }
@@ -223,9 +225,11 @@ public class AgregarCiudad extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = func.verificarAristas(ciudadesAgregadas);
         if(string == null){
+            Menu VentanaMenu = new Menu(); 
             this.setVisible(false);
             VentanaMenu.setLocationRelativeTo(null);
             VentanaMenu.setVisible(true);
+            
         }
         else{
             JOptionPane.showMessageDialog(null, "Todavía hay ciudades sin aristas." + string);
@@ -235,21 +239,26 @@ public class AgregarCiudad extends javax.swing.JFrame {
     private void AgregarAristasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAristasActionPerformed
         // TODO add your handling code here:
         if(!"".equals(DistanciaTexto.getText())){
+            
             int numCiudadOrigen = Integer.parseInt(NombreCiudad.getText());
-            String ciudad = ComboAristas.getSelectedItem().toString();
-            int numCiudadDestino = Integer.parseInt(ciudad);
+            int numCiudadDestino = Integer.parseInt(ComboAristas.getSelectedItem().toString());
             double distancia = Double.parseDouble(DistanciaTexto.getText());
             
             if(numCiudadOrigen != numCiudadDestino){
-                if(GrafoSimulacion.getCiudad(numCiudadOrigen).buscarArista(numCiudadDestino) == null){
+                Ciudad ciudadOrigen = GrafoSimulacion.getCiudad(numCiudadOrigen);
+                
+                if(ciudadOrigen.buscarArista(numCiudadDestino) == null){
+                    
                     GrafoSimulacion.addArista(numCiudadOrigen, numCiudadDestino, distancia);
                     this.DistanciaTexto.setText("");
                     this.Guardar.setEnabled(true);
                     JOptionPane.showMessageDialog(null, "Aristas agregadas.\n" + GrafoSimulacion.stringCiudad(numCiudadOrigen));
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Ya existe una arista entre ambas ciudades seleccionadas.");
                 }
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "La ciudad origen y destino NO pueden ser iguales");

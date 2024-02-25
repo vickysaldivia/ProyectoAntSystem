@@ -7,10 +7,10 @@ package GUI;
 import Clases.Hormiga;
 import static GUI.Menu.GrafoSimulacion;
 import funciones.FuncionRellenarCombos;
-import Clases.Sistema;
 import Clases.Sistema2;
 import edd.Ciudad;
 import edd.ListaSimple;
+import funciones.MostrarGrafo;
 import funciones.funcionesSistema;
 import javax.swing.JOptionPane;
 /**
@@ -25,6 +25,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
     
     FuncionRellenarCombos re = new FuncionRellenarCombos();
     funcionesSistema funcsis = new funcionesSistema();
+    MostrarGrafo visualizar = new MostrarGrafo();
     public NuevaSimulacion() {
         
         initComponents();
@@ -97,7 +98,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         Beta.setBackground(new java.awt.Color(255, 255, 255));
         Beta.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Beta.setForeground(new java.awt.Color(83, 26, 11));
-        Beta.setText("1");
+        Beta.setText("2");
         Beta.setToolTipText("Se muestra el recomendado.");
         Beta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         Beta.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +116,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         Alfa.setBackground(new java.awt.Color(255, 255, 255));
         Alfa.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
         Alfa.setForeground(new java.awt.Color(83, 26, 11));
-        Alfa.setText("2");
+        Alfa.setText("1");
         Alfa.setToolTipText("Se muestra el recomendado.");
         Alfa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         Alfa.addActionListener(new java.awt.event.ActionListener() {
@@ -341,7 +342,9 @@ public class NuevaSimulacion extends javax.swing.JFrame {
                 this.Reiniciar.setEnabled(false);
                 int ciclos = Integer.parseInt(CantidadCiclos.getText().toString());
                 
-                ListaSimple<Hormiga> hormigas = funcsis.inicializarHormigas(ciclos,ciudadInicial);
+                
+                
+                ListaSimple<Hormiga> hormigas = funcsis.inicializarHormigas(Integer.parseInt(CantidadHormigas.getText().toString()),ciudadInicial);
                 
                 
                 
@@ -352,8 +355,14 @@ public class NuevaSimulacion extends javax.swing.JFrame {
                 
                 
                 Sistema2 sistema = new Sistema2(GrafoSimulacion, hormigas,ciclos, ciudadInicial, ciudadFinal, alfa, beta, rho);
+                
                 funcsis.inicializarFeromonas(sistema);
                 sistema.simulacion();
+                System.out.println("");
+                sistema.getCaminoOptimo().Show();
+                System.out.println(sistema.getDistanciaOptima());
+                
+                this.visualizar.GrafoMostrar(sistema.getGrafo(),sistema.getCaminoOptimo());
                 
 //                for (int i = 0; i < ciclos; i++) {
 //                    sistema.iniciarCiclo(i);

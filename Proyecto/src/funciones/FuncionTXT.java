@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 /**
  *
  * @author vickysaldivia
@@ -20,10 +21,13 @@ public class FuncionTXT {
     
     public void StringTXT(Grafo GrafoSimulacion, String FileName) throws IOException{
         String Grafo = GrafoSimulacion.toString();
-        FileWriter writer = new FileWriter(FileName);
-        writer.write(Grafo);
-        writer.close();
+        System.out.println(Grafo);
+        try (FileWriter writer = new FileWriter(FileName)) {
+            writer.write(Grafo);
+        }
+        
     }
+
     
     public void eliminarArchivo(String FileName) {
         File archivo = new File(FileName);

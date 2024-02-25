@@ -4,6 +4,7 @@
  */
 package GUI;
 
+
 /**
  *
  * @author vickysaldivia
@@ -13,8 +14,15 @@ public class MostrarGrafoInterfaz extends javax.swing.JFrame {
     /**
      * Creates new form MostrarGrafo
      */
+    
+    //MostrarGrafo mostrar = new MostrarGrafo();
+    //Graph graph = mostrar.CrearGrafoMostrar(GrafoSimulacion);
+    
+    
     public MostrarGrafoInterfaz() {
         initComponents();
+        
+        //Panel1.add((Component) view);
     }
 
     /**
@@ -28,19 +36,28 @@ public class MostrarGrafoInterfaz extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Volver = new javax.swing.JButton();
+        Panel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Volver.setBackground(new java.awt.Color(83, 26, 11));
+        Volver.setForeground(new java.awt.Color(241, 246, 240));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverActionPerformed(evt);
             }
         });
-        jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 190, -1));
+        jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 190, 30));
+        jPanel1.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 450, 330));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hormigasNido.jpg"))); // NOI18N
+        jLabel1.setFocusable(false);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 380));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 390));
 
@@ -92,7 +109,9 @@ public class MostrarGrafoInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel1;
     private javax.swing.JButton Volver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

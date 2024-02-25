@@ -5,53 +5,87 @@
 package edd;
 
 /**
- *
- * @author vickysaldivia
- */
+* Clase genérica ListaSimple que representa una lista simplemente enlazada.
+*
+* @param <T> Tipo genérico de los datos almacenados en la lista.
+*
+* @author vickysaldivia
+*/
 public class ListaSimple<T> {
     // Nodo apuntador al primero de la lista
     private Nodo pFirst;
     private int size;
 
-    // Constructor
+    /**
+    * Crea una nueva instancia de ListaSimple.
+    * Inicializa el puntero al primer nodo en null y el tamaño en 0.
+    */
     public ListaSimple() {
         this.pFirst = null;
         this.size = 0;
     }
     
-    // Getters y Setters de los atributos de la lista
+    /**
+    * Devuelve el primer nodo de la lista.
+    *
+    * @return el primer nodo de la lista.
+    */
     public Nodo getpFirst() {
         return pFirst;
     }
 
+    /**
+    * Establece el primer nodo de la lista.
+    *
+    * @param pFirst el nuevo primer nodo de la lista.
+    */
     public void setpFirst(Nodo pFirst) {
         this.pFirst = pFirst;
     }
-
+    
+    /**
+    * Devuelve el tamaño de la lista.
+    *
+    * @return el tamaño de la lista.
+    */
     public int getSize() {
         return size;
     }
-
+    
+    /**
+    * Establece el tamaño de la lista.
+    *
+    * @param size el nuevo tamaño de la lista.
+    */
     public void setSize(int size) {
         this.size = size;
     }
     
     // Primitivas
     
-    //Destructor
+    /**
+    * Destructor de la lista.
+    * Elimina todos los nodos de la lista y establece el puntero al primer nodo en null y el tamaño en 0.
+    */
     public void DeleteList(){
         this.pFirst = null;
         this.size = 0;
     }
     
-    //Función para verificar si la lista está vacía.
-    // True: this.pFirst == null
-    // False: this.pFirst != null
+    /**
+    * Verifica si la lista está vacía.
+    *
+    * @return true si la lista está vacía, false en caso contrario.
+    */
     public boolean isEmpty(){
         return this.pFirst == null;
     }
     
-    // Funcion para insertar al final
+    /**
+    * Inserta un nuevo dato al final de la lista.
+    *
+    * @param data el dato a insertar.
+    */
     public void Append(T data){
         Nodo pNew = new Nodo(data);
         if (isEmpty()){
@@ -67,7 +101,12 @@ public class ListaSimple<T> {
         this.size ++;
     }
     
-    //Funcion para insertar al inicio
+    /**
+    * Inserta un nuevo dato al inicio de la lista.
+    *
+    * @param data el dato a insertar.
+    * @return el nuevo nodo creado.
+    */
     public Nodo PreAppend(T data){
         Nodo pNew = new Nodo(data);
         if(isEmpty()){
@@ -81,7 +120,13 @@ public class ListaSimple<T> {
         return pNew;
     }
     
-    //Funcion para insertar por Posicion //utilizar try catch para evaluar la posicion
+    /**
+    * Inserta un nuevo dato en una posición específica de la lista.
+    *
+    * @param pos la posición donde se insertará el dato.
+    * @param data el dato a insertar.
+    * @throws IndexOutOfBoundsException si la posición es menor a 0 o mayor al tamaño de la lista.
+    */
     public void InsertPosition(int pos, T data){
         if(pos>=0 && pos<=this.size-1){
             if(pos == 0){
@@ -104,7 +149,12 @@ public class ListaSimple<T> {
         }
     }
     
-    //buscar un elemento de la lista por referencia
+    /**
+    * Busca un elemento de la lista por referencia.
+    *
+    * @param referencia el elemento a buscar.
+    * @return true si el elemento fue encontrado, false en caso contrario.
+    */
     public boolean Search(T referencia){
         Nodo aux = this.pFirst;
         boolean found = false;
@@ -120,7 +170,12 @@ public class ListaSimple<T> {
         return false;
     }
     
-    //Inserta un Nodo por referencia
+    /**
+    * Inserta un nodo por referencia.
+    *
+    * @param referencia la referencia del nodo anterior al que se insertará el nuevo nodo.
+    * @param data el dato a almacenar en el nuevo nodo.
+    */
     public void InsertReference(T referencia, T data){
         Nodo pNew = new Nodo(data);
         Nodo aux = this.pFirst;
@@ -136,7 +191,11 @@ public class ListaSimple<T> {
         }
     }
     
-    //Transforma una lista en una cadena de caracteres
+    /**
+     * Permite transformar una lista en un String.
+     * 
+     * @return String de la lista.
+     */
     public String ListToString(){
         if(!isEmpty()){
             Nodo aux = this.pFirst;
@@ -150,6 +209,9 @@ public class ListaSimple<T> {
         return "Lista vacía";
     }
     
+    /**
+     * Permite imprimir por pantalla los elementos de una lista.
+     */
     public void Show(){
         if(!isEmpty()){
             String list = "";
@@ -163,6 +225,11 @@ public class ListaSimple<T> {
         }
     }
     
+    /**
+    * Elimina un nodo por referencia.
+    *
+    * @param referencia la referencia del nodo a eliminar.
+    */
     public void DeleteByReference(T referencia){
         if(Search(referencia)){
             Nodo aux = this.pFirst;
@@ -174,6 +241,12 @@ public class ListaSimple<T> {
         this.size --;
     }
     
+    /**
+    * Elimina un nodo en la posición especificada.
+    *
+    * @param pos la posición del nodo a eliminar.
+    * @throws IndexOutOfBoundsException si la posición está fuera de rango.
+    */
     public void DeleteByPosition(int pos){
         if(!isEmpty()){
             if(pos>= 0 && pos< this.size){
@@ -193,7 +266,12 @@ public class ListaSimple<T> {
         }
     }
     
-    // Editar info de un Nodo mediante su referencia
+    /**
+     * Edita la información de un nodo mediante su referencia.
+     *
+     * @param referencia la referencia del nodo a editar.
+     * @param data la nueva información del nodo.
+     */
     public void EditByReference(T referencia, T data){
         if(this.Search(referencia)){
             Nodo aux = this.pFirst;
@@ -204,7 +282,13 @@ public class ListaSimple<T> {
         }
     }
     
-    // Editar info de un Nodo mediante su posicion
+    /**
+     * Edita la información de un nodo mediante su posición.
+     *
+     * @param pos la posición del nodo a editar.
+     * @param data la nueva información del nodo.
+     * @throws IndexOutOfBoundsException si la posición está fuera de rango.
+     */
     public void EditByPosition(int pos, T data){
         if(pos>= 0 && pos <=this.size-1){
             if(pos == 0){
@@ -220,6 +304,13 @@ public class ListaSimple<T> {
         }
     }
     
+    /**
+    * Obtiene el dato en la posición especificada.
+    *
+    * @param pos la posición del nodo a obtener.
+    * @return el dato en la posición especificada.
+    * @throws IndexOutOfBoundsException si la posición está fuera de rango.
+    */
     public T GetData(int pos){
         if(pos>= 0 && pos < this.size){
             if(pos == 0){
@@ -236,6 +327,13 @@ public class ListaSimple<T> {
         return null;
     }
     
+    /**
+    * Obtiene el nodo en la posición especificada.
+    *
+    * @param pos la posición del nodo a obtener.
+    * @return el nodo en la posición especificada.
+    * @throws IndexOutOfBoundsException si la posición está fuera de rango.
+    */
     public Nodo GetNodo(int pos){
         if(pos>= 0 && pos < this.size){
             if(pos == 0){
@@ -252,6 +350,12 @@ public class ListaSimple<T> {
         return null;
     }
     
+    /**
+     * Obtiene el índice de un nodo en la lista.
+     *
+     * @param node el nodo a buscar.
+     * @return el índice del nodo en la lista, -1 en caso de no encontrarlo.
+     */
     public int GetIndex(Nodo node){
         if(!isEmpty()){
             int counter = 0;
@@ -270,6 +374,13 @@ public class ListaSimple<T> {
         return -1;
     }
     
+    /**
+     * Obtiene la posición de un elemento en la lista.
+     *
+     * @param referencia el elemento a buscar.
+     * @return la posición del elemento en la lista, -1 en caso de no
+     * encontrarlo.
+     */
     public int GetPosition(T referencia){
         if(this.Search(referencia)){
             int counter = 0;

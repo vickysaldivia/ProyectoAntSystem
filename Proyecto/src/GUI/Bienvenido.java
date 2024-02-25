@@ -101,21 +101,21 @@ public class Bienvenido extends javax.swing.JFrame {
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         // TODO add your handling code here:
         Grafo newGrafo;
-        try {
-            newGrafo = func.cargaTXTAutomatica();
-            if(newGrafo != null){
-                int result = JOptionPane.showConfirmDialog(null, "Se ha encontrado un archivo previamente guardado.\n¿Desea cargarlo?", "CARGAR GRAFO", JOptionPane.YES_NO_OPTION);
-                if(result == JOptionPane.YES_OPTION){    
-                    Menu.GrafoSimulacion = newGrafo;
-                    JOptionPane.showMessageDialog(null, "Se ha cargado un archivo automáticamente");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "No se ha cargado el archivo encontrado");
-                }
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Bienvenido.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            newGrafo = func.cargaTXTAutomatica();
+//            if(newGrafo != null){
+//                int result = JOptionPane.showConfirmDialog(null, "Se ha encontrado un archivo previamente guardado.\n¿Desea cargarlo?", "CARGAR GRAFO", JOptionPane.YES_NO_OPTION);
+//                if(result == JOptionPane.YES_OPTION){    
+//                    Menu.GrafoSimulacion = newGrafo;
+//                    JOptionPane.showMessageDialog(null, "Se ha cargado un archivo automáticamente");
+//                }
+//                else{
+//                    JOptionPane.showMessageDialog(null, "No se ha cargado el archivo encontrado");
+//                }
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(Bienvenido.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         Menu VentanaMenu = new Menu(); 
         this.setVisible(false);
         VentanaMenu.setLocationRelativeTo(null);
