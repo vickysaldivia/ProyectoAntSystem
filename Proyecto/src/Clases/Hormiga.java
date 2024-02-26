@@ -98,9 +98,6 @@ public class Hormiga {
             this.setCiudadActual(destino);
             ciudadesRecorridas.Append(destino);
             distanciaRecorrida += distancia;
-            JOptionPane.showMessageDialog(null, "La hormiga se ha movido");
-        }else{
-            JOptionPane.showMessageDialog(null, "Ya se visito la ciudad.");
         }
     }
     

@@ -8,6 +8,7 @@ import edd.Arista;
 import edd.Ciudad;
 import edd.Grafo;
 import edd.ListaSimple;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /**
@@ -255,13 +256,10 @@ public class Sistema2 {
             for (int j = 0; j < this.hormigas.getSize(); j++) {
                 recorridoCompleto(hormigas.GetData(j), this.factorExploracion);
                 this.historialtemp.Append(this.llenarHistorialHormiga(hormigas.GetData(j), (j+1)));
-                hormigas.GetData(j).getCiudadesRecorridas().Show();
+                
             }
-            //System.out.println(this.grafo.toString2());
-            //System.out.println("\n");
+
             this.evaporarFeromonas();
-            //this.reiniciarHormigas();
-            //this.hormigas.Show();
             if(this.factorExploracion > 0 && (this.factorExploracion - 0.2) > 0){
                 this.factorExploracion = this.factorExploracion - 0.2;
                 
@@ -269,7 +267,6 @@ public class Sistema2 {
             
             Historial newHistorial = new Historial(historialtemp, caminoOptimo, distanciaOptima);
             this.historial.Append(newHistorial); 
-            System.out.println(historialtemp.getSize());
             
         }
     }
@@ -325,7 +322,7 @@ public class Sistema2 {
             this.setDistanciaOptima(hormiga.getDistanciaRecorrida());
             this.setCaminoOptimo(hormiga.getCiudadesRecorridas());
         } else {
-            if (hormiga.getDistanciaRecorrida() < this.distanciaOptima && hormiga.getCiudadActual().getValue() == this.ciudadFinal.getValue()) {
+            if (hormiga.getDistanciaRecorrida() < this.distanciaOptima) {
                 this.setCaminoOptimo(hormiga.getCiudadesRecorridas());
                 this.setDistanciaOptima(hormiga.getDistanciaRecorrida());
             }
@@ -417,25 +414,18 @@ public class Sistema2 {
                 }
                 probMayor = probActual;
                 index.Append(i);
-                
-                //System.out.println(ciudadesCandidatas.GetData(i).getDestino());
+               
             }
         }
         Random randomNumbers = new Random();
         
-        if(randomNumbers.nextDouble() < factorExploracion){
+        if(randomNumbers.nextDouble(1) < factorExploracion){
             int indexArista = randomNumbers.nextInt(index.getSize());
             return ciudadesCandidatas.GetData(indexArista);
-            //Arista aristaFinal = ciudadesCandidatas.GetData(indexArista);
         }
         else{
             return ciudadesCandidatas.GetData(posicion);
         }
-
-
-        //int indexArista = randomNumbers.nextInt(index.getSize());
-        //Arista aristaFinal = ciudadesCandidatas.GetData(indexArista);
-        //return aristaFinal;
     }
 
     /**
@@ -455,7 +445,6 @@ public class Sistema2 {
      * Evapora las feromonas en todas las aristas del grafo.
      */
     public void evaporarFeromonas() {
-        // arista verificar si destino > origen
         for (int i = 0; i < grafo.getCiudades().getSize(); i++) {
             Ciudad ciudadActual = (Ciudad) grafo.getCiudades().GetData(i);
             for (int j = 0; j < ciudadActual.getAristas().getSize(); j++) {
@@ -485,6 +474,13 @@ public class Sistema2 {
         }
     }
     
+    /**
+     * Genera y devuelve una cadena con los resultados de la simulación.
+     *
+     * Este método construye una cadena que contiene el resumen de toda la simulación.
+     *
+     * @return Una cadena con los resultados de la simulación.
+     */
     public String finSimulacion(){
         String finSimulacion = "RESULTADOS DE LA SIMULACIÓN" + "\n\nCICLOS TOTALES: "+ String.valueOf(this.ciclos)+"\nHORMIGAS EN EL SISTEMA: " + String.valueOf(this.hormigas.getSize()) + "\n\n";
         String caminoOpt = "";
@@ -498,15 +494,42 @@ public class Sistema2 {
         for (int i = 0; i < this.historial.getSize(); i++) {
             Historial historialCiclo = this.historial.GetData(i);
             finSimulacion += "\nCICLO (" + (i+1) + ")\n";
-            System.out.println(historialCiclo.getHistorialHormigas().getSize());
             for (int j = 0; j < historialCiclo.getHistorialHormigas().getSize(); j++) {
                 HistorialHormiga historialHor = historialCiclo.getHistorialHormigas().GetData(j);
                 finSimulacion += "HORMIGA (" + String.valueOf(historialHor.getHormiga()) + ") -- CAMINO RECORRIDO: " + historialHor.getCaminoRecorrido() + " -- DISTANCIA RECORRIDA: " + String.valueOf(historialHor.getDistanciaRecorrida()) + "\n";
             }
             
         }
+        finSimulacion += this.feromonasFinales();
         return finSimulacion;
     }
     
-    
+    /**
+     * Genera una cadena de texto que representa las feromonas finales en cada
+     * arista del grafo.
+     *
+     * @return Una cadena de texto que contiene las feromonas en cada arista con
+     * el formato: 
+*         FEROMONAS POR CAMINO:
+     *         CAMINO X-Y: Z
+     * Donde X e Y son los valores de los vértices de la arista y Z es el
+     * valor de las feromonas en esa arista.
+     */
+    public String feromonasFinales(){
+
+        String feromonas = "\n\nFEROMONAS POR CAMINO:\n";
+        for (int i = 0; i < this.grafo.getCiudades().getSize(); i++) {
+            Ciudad ciudad = this.grafo.getCiudades().GetData(i);
+            for (int j = 0; j < ciudad.getAristas().getSize(); j++) {
+                Arista arista = ciudad.getAristas().GetData(j);
+                if (arista.getOrigen().getValue() > arista.getDestino().getValue()) {
+                    DecimalFormat formato = new DecimalFormat("#.##");
+                    String fer = formato.format(arista.getFeromonas());
+                    feromonas += "CAMINO " + String.valueOf(arista.getOrigen().getValue()) + "-" +String.valueOf(arista.getDestino().getValue()) + ": " + fer + "\n";
+                }
+            }
+            
+        }
+        return feromonas;
+    }
 }

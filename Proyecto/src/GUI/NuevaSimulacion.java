@@ -151,11 +151,11 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Rho, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 60, 30));
 
         jLabel5.setBackground(new java.awt.Color(83, 26, 11));
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(83, 26, 11));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("<html>Grado de<p>evaporación:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 100, -1));
+        jLabel5.setText("<html>Grado de<p>evaporación (ρ):");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 140, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(83, 26, 11));
@@ -167,7 +167,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(83, 26, 11));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("<html>Visibilidad de<p>las ciudades:");
+        jLabel4.setText("<html>Visibilidad de<p>las ciudades (β):");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 180, -1));
 
         jLabel2.setBackground(new java.awt.Color(241, 246, 240));
@@ -182,7 +182,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("<html>Importancia de<p>feromonas:");
+        jLabel3.setText("<html>Importancia de<p>feromonas (α):");
         jLabel3.setFocusable(false);
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 170, -1));
 
@@ -223,7 +223,8 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 60, 20));
 
         CiudadFinal.setBackground(new java.awt.Color(83, 26, 11));
-        CiudadFinal.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        CiudadFinal.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CiudadFinal.setForeground(new java.awt.Color(255, 255, 255));
         CiudadFinal.setMaximumRowCount(20);
         CiudadFinal.setToolTipText("");
         CiudadFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +235,8 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(CiudadFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 60, -1));
 
         CiudadInicial.setBackground(new java.awt.Color(83, 26, 11));
-        CiudadInicial.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        CiudadInicial.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CiudadInicial.setForeground(new java.awt.Color(255, 255, 255));
         CiudadInicial.setMaximumRowCount(20);
         CiudadInicial.setToolTipText("");
         CiudadInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +289,8 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 220, 350));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +300,8 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, 30));
 
         Iniciar.setBackground(new java.awt.Color(83, 26, 11));
-        Iniciar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Iniciar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Iniciar.setForeground(new java.awt.Color(255, 255, 255));
         Iniciar.setText("Iniciar");
         Iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +311,8 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 100, 30));
 
         Reiniciar.setBackground(new java.awt.Color(83, 26, 11));
-        Reiniciar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Reiniciar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Reiniciar.setForeground(new java.awt.Color(255, 255, 255));
         Reiniciar.setText("Reiniciar");
         Reiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,12 +364,12 @@ public class NuevaSimulacion extends javax.swing.JFrame {
                 
                 funcsis.inicializarFeromonas(sistema);
                 sistema.simulacion();
-                System.out.println("");
-                sistema.getCaminoOptimo().Show();
-                System.out.println(sistema.getDistanciaOptima());
+                
                 this.Historial.setText(sistema.finSimulacion());
+                this.Reiniciar.setEnabled(true);
                 MostrarGrafo visualizar = new MostrarGrafo();
                 visualizar.GrafoMostrar(sistema.getGrafo(),sistema.getCaminoOptimo());
+                
                 
             }
             else{

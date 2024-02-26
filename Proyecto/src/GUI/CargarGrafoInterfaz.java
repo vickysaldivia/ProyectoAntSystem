@@ -86,7 +86,8 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(Fichero, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 250, -1));
 
         BuscarArchivo.setBackground(new java.awt.Color(83, 26, 11));
-        BuscarArchivo.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        BuscarArchivo.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        BuscarArchivo.setForeground(new java.awt.Color(255, 255, 255));
         BuscarArchivo.setText("Buscar");
         BuscarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +107,8 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 260, 120));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +118,8 @@ public class CargarGrafoInterfaz extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 40));
 
         CargarTXT.setBackground(new java.awt.Color(83, 26, 11));
-        CargarTXT.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        CargarTXT.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CargarTXT.setForeground(new java.awt.Color(255, 255, 255));
         CargarTXT.setText("Cargar");
         CargarTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

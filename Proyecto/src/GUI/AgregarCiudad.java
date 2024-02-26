@@ -105,8 +105,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
 
         ComboAristas.setBackground(new java.awt.Color(83, 26, 11));
-        ComboAristas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
-        ComboAristas.setForeground(new java.awt.Color(241, 246, 240));
+        ComboAristas.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ComboAristas.setForeground(new java.awt.Color(255, 255, 255));
         ComboAristas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboAristasActionPerformed(evt);
@@ -115,7 +115,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(ComboAristas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 100, 30));
 
         AgregarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarCiudad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        AgregarCiudad.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        AgregarCiudad.setForeground(new java.awt.Color(255, 255, 255));
         AgregarCiudad.setText("Agregar Ciudad");
         AgregarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +126,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(AgregarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +137,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 80, 30));
 
         AgregarAristas.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarAristas.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        AgregarAristas.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        AgregarAristas.setForeground(new java.awt.Color(255, 255, 255));
         AgregarAristas.setText("Agregar Arista");
         AgregarAristas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +174,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 400, 20));
 
         Guardar.setBackground(new java.awt.Color(83, 26, 11));
-        Guardar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Guardar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

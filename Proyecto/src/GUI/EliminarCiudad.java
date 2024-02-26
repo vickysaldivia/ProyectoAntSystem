@@ -66,7 +66,8 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 390, 80));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +77,8 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarCiudad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        EliminarCiudad.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        EliminarCiudad.setForeground(new java.awt.Color(255, 255, 255));
         EliminarCiudad.setText("Eliminar");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +95,8 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jLabel3.setText("CIUDAD:");
 
         CiudadesDisponibles.setBackground(new java.awt.Color(83, 26, 11));
+        CiudadesDisponibles.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CiudadesDisponibles.setForeground(new java.awt.Color(255, 255, 255));
         CiudadesDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CiudadesDisponiblesActionPerformed(evt);

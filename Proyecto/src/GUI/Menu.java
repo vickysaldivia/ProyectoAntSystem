@@ -75,7 +75,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 90, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarCiudad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        EliminarCiudad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        EliminarCiudad.setForeground(new java.awt.Color(255, 255, 255));
         EliminarCiudad.setText("Eliminar Ciudad");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +93,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 220, 70));
 
         MostrarGrafo.setBackground(new java.awt.Color(83, 26, 11));
-        MostrarGrafo.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        MostrarGrafo.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        MostrarGrafo.setForeground(new java.awt.Color(255, 255, 255));
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +122,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, -1));
 
         NuevaSimulacion.setBackground(new java.awt.Color(83, 26, 11));
-        NuevaSimulacion.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        NuevaSimulacion.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        NuevaSimulacion.setForeground(new java.awt.Color(255, 255, 255));
         NuevaSimulacion.setText("Nueva Simulación");
         NuevaSimulacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +136,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 280, 20));
 
         CargarGrafoPreexistente.setBackground(new java.awt.Color(83, 26, 11));
-        CargarGrafoPreexistente.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        CargarGrafoPreexistente.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CargarGrafoPreexistente.setForeground(new java.awt.Color(255, 255, 255));
         CargarGrafoPreexistente.setText("Cargar Grafo Preexistente");
         CargarGrafoPreexistente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +147,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(CargarGrafoPreexistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 240, 30));
 
         Guardar.setBackground(new java.awt.Color(83, 26, 11));
-        Guardar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        Guardar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +158,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 100, -1));
 
         AgregarCiudad3.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarCiudad3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        AgregarCiudad3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        AgregarCiudad3.setForeground(new java.awt.Color(255, 255, 255));
         AgregarCiudad3.setText("Agregar Ciudad");
         AgregarCiudad3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +169,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(AgregarCiudad3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 130, -1));
 
         jButton1.setBackground(new java.awt.Color(83, 26, 11));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +180,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, -1));
 
         jButton2.setBackground(new java.awt.Color(83, 26, 11));
+        jButton2.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("↵");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +191,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 30, -1));
 
         EliminarGrafoCargado.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarGrafoCargado.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        EliminarGrafoCargado.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        EliminarGrafoCargado.setForeground(new java.awt.Color(255, 255, 255));
         EliminarGrafoCargado.setText("Eliminar Grafo Cargado");
         EliminarGrafoCargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
