@@ -29,6 +29,7 @@ public class Sistema2 {
     private double distanciaOptima;
     private ListaSimple<Historial> historial;
     private ListaSimple<HistorialHormiga> historialtemp;
+    private double factorExploracion;
     
     /**
      * Constructor de la clase Sistema.
@@ -56,6 +57,7 @@ public class Sistema2 {
         this.distanciaOptima = 0;
         this.historial = new ListaSimple();
         this.historialtemp = new ListaSimple();
+        this.factorExploracion = 0.8;
     }
 
     //Getter and Setter
@@ -249,8 +251,10 @@ public class Sistema2 {
      */
     public void simulacion() {
         for (int i = 0; i < this.ciclos; i++) {
+            this.historialtemp.DeleteList();
             for (int j = 0; j < this.hormigas.getSize(); j++) {
-                recorridoCompleto(hormigas.GetData(j));
+                recorridoCompleto(hormigas.GetData(j), this.factorExploracion);
+                this.historialtemp.Append(this.llenarHistorialHormiga(hormigas.GetData(j), (j+1)));
                 hormigas.GetData(j).getCiudadesRecorridas().Show();
             }
             //System.out.println(this.grafo.toString2());
@@ -258,24 +262,60 @@ public class Sistema2 {
             this.evaporarFeromonas();
             //this.reiniciarHormigas();
             //this.hormigas.Show();
+            if(this.factorExploracion > 0 && (this.factorExploracion - 0.2) > 0){
+                this.factorExploracion = this.factorExploracion - 0.2;
+                
+            }
+            
+            Historial newHistorial = new Historial(historialtemp, caminoOptimo, distanciaOptima);
+            this.historial.Append(newHistorial); 
+            System.out.println(historialtemp.getSize());
+            
         }
     }
-
+    
+    /**
+     * Llena y devuelve un nuevo objeto {@link HistorialHormiga} con la
+     * información de la instancia de {@link Hormiga} dada.
+     *
+     * Este método construye una cadena que representa el camino recorrido por
+     * las ciudades visitadas, y calcula la distancia total recorrida por la
+     * hormiga.
+     *
+     * @param hormiga La instancia de {@link Hormiga} de la que se extraerá la
+     * información.
+     * @param hormigaValor El valor asociado con la hormiga dada.
+     * @return Un nuevo objeto {@link HistorialHormiga} llenado con la
+     * información de la hormiga.
+     */
+    public HistorialHormiga llenarHistorialHormiga(Hormiga hormiga, int hormigaValor){
+        String caminoRecorrido = "CIUDADES RECORRIDAS: ";
+        for (int i = 0; i < hormiga.getCiudadesRecorridas().getSize()-1; i++) {
+            Ciudad ciudadRecorrida = hormiga.getCiudadesRecorridas().GetData(i);
+            caminoRecorrido+= String.valueOf(ciudadRecorrida.getValue()) + "-";
+        }
+        Ciudad ciudadRecorrida = hormiga.getCiudadesRecorridas().GetData(hormiga.getCiudadesRecorridas().getSize()-1);
+        caminoRecorrido += String.valueOf(ciudadRecorrida.getValue());  
+        double distanciaRecorrida = hormiga.getDistanciaRecorrida();
+        
+        return new HistorialHormiga(hormigaValor,caminoRecorrido,distanciaRecorrida);
+    }
     
     /**
      * Realiza un recorrido completo con la hormiga dada, actualizando el camino
      * óptimo y la distancia óptima del sistema si es necesario.
      *
      * @param hormiga La hormiga a utilizar en el recorrido completo.
+     * @param factorExploracion
      */
 
-    public void recorridoCompleto(Hormiga hormiga) {
+    public void recorridoCompleto(Hormiga hormiga, Double factorExploracion) {
         for (int i = 0; i < this.grafo.getCiudades().getSize(); i++) {
             if (hormiga.getCiudadActual().getValue() != this.ciudadFinal.getValue()) {
                 ListaSimple<Arista> ciudadesCandidatas = ciudadesCandidatas(hormiga);
                 if (ciudadesCandidatas.getpFirst() != null) {
                     ListaSimple<Double> probs = probabilidades(ciudadesCandidatas);
-                    Arista arista = decidirCiudad(probs, ciudadesCandidatas);
+                    Arista arista = decidirCiudad(probs, ciudadesCandidatas, factorExploracion);
                     hormiga.visitarCiudad(arista.getDestino(), arista.getDistancia());
                 }
             }
@@ -359,23 +399,43 @@ public class Sistema2 {
      * @param probabilidades La lista de probabilidades asociadas a cada arista
      * en la lista de ciudades candidatas.
      * @param ciudadesCandidatas La lista de ciudades candidatas.
+     * @param factorExploracion
      * @return La arista seleccionada.
      */
-    public Arista decidirCiudad(ListaSimple<Double> probabilidades, ListaSimple<Arista> ciudadesCandidatas) {
+    
+    
+    public Arista decidirCiudad(ListaSimple<Double> probabilidades, ListaSimple<Arista> ciudadesCandidatas, Double factorExploracion) {
         ListaSimple<Integer> index = new ListaSimple();
         double probMayor = 0;
+        int posicion = -1;
         
         for (int i = 0; i < probabilidades.getSize(); i++) {
             double probActual = (double) probabilidades.GetData(i);
-            if (probActual > probMayor || probActual==probMayor) {
+            if (probActual >= probMayor) {
+                if(probActual > probMayor){
+                    posicion = i;
+                }
                 probMayor = probActual;
                 index.Append(i);
+                
+                //System.out.println(ciudadesCandidatas.GetData(i).getDestino());
             }
         }
         Random randomNumbers = new Random();
-        int indexArista = randomNumbers.nextInt(index.getSize());
-        Arista aristaFinal = ciudadesCandidatas.GetData(indexArista);
-        return aristaFinal;
+        
+        if(randomNumbers.nextDouble() < factorExploracion){
+            int indexArista = randomNumbers.nextInt(index.getSize());
+            return ciudadesCandidatas.GetData(indexArista);
+            //Arista aristaFinal = ciudadesCandidatas.GetData(indexArista);
+        }
+        else{
+            return ciudadesCandidatas.GetData(posicion);
+        }
+
+
+        //int indexArista = randomNumbers.nextInt(index.getSize());
+        //Arista aristaFinal = ciudadesCandidatas.GetData(indexArista);
+        //return aristaFinal;
     }
 
     /**
@@ -424,5 +484,29 @@ public class Sistema2 {
             ciudadActual.buscarArista(siguienteCiudad.getValue()).setFeromonas(totalFeromonas);
         }
     }
+    
+    public String finSimulacion(){
+        String finSimulacion = "RESULTADOS DE LA SIMULACIÓN" + "\n\nCICLOS TOTALES: "+ String.valueOf(this.ciclos)+"\nHORMIGAS EN EL SISTEMA: " + String.valueOf(this.hormigas.getSize()) + "\n\n";
+        String caminoOpt = "";
+        for (int i = 0; i < caminoOptimo.getSize()-1; i++) {
+            caminoOpt += String.valueOf(caminoOptimo.GetData(i).getValue()) + "-";
+        }
+        caminoOpt += String.valueOf(caminoOptimo.GetData(caminoOptimo.getSize()-1).getValue());
+        
+        finSimulacion += "CAMINO ÓPTIMO: " + caminoOpt + "\nDISTANCIA ÓPTIMA: " + String.valueOf(this.distanciaOptima) + "\n";
+        
+        for (int i = 0; i < this.historial.getSize(); i++) {
+            Historial historialCiclo = this.historial.GetData(i);
+            finSimulacion += "\nCICLO (" + (i+1) + ")\n";
+            System.out.println(historialCiclo.getHistorialHormigas().getSize());
+            for (int j = 0; j < historialCiclo.getHistorialHormigas().getSize(); j++) {
+                HistorialHormiga historialHor = historialCiclo.getHistorialHormigas().GetData(j);
+                finSimulacion += "HORMIGA (" + String.valueOf(historialHor.getHormiga()) + ") -- CAMINO RECORRIDO: " + historialHor.getCaminoRecorrido() + " -- DISTANCIA RECORRIDA: " + String.valueOf(historialHor.getDistanciaRecorrida()) + "\n";
+            }
+            
+        }
+        return finSimulacion;
+    }
+    
     
 }

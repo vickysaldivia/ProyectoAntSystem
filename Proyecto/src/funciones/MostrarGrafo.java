@@ -84,8 +84,9 @@ public class MostrarGrafo {
             this.displayCamino(caminoOptimo);
         }
         
-        graph.display();
         Viewer viewer = graph.display();
+        
+        viewer.enableAutoLayout();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }
     
@@ -154,6 +155,7 @@ public class MostrarGrafo {
         }
         return null;
     }
+    
     
     
     

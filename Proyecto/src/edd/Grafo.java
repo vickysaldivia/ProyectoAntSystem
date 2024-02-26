@@ -234,7 +234,7 @@ public class Grafo {
             for (int j = 0; j < ciudad.getAristas().getSize();j++) {
                 Arista arista = (Arista) ciudad.getAristas().GetData(j);
                 if(ciudad.getValue() > arista.getDestino().getValue()){
-                    sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n").append(arista.getFeromonas());
+                    sb.append(arista.getOrigen().getValue()).append(",").append(arista.getDestino().getValue()).append(",").append(arista.getDistancia()).append("\n");
                 }
             }
         }
@@ -259,71 +259,5 @@ public class Grafo {
          return null;
     }
 
-//    
-//    //DFS, DFS RECURSIVO, DIJKSTRA
-//    public ListaSimple dfs(int numeroCiudad) {
-//        Ciudad ciudadInicio = getCiudad(numeroCiudad);
-//        ListaSimple recorrido = new ListaSimple();
-//        boolean[] visitados = new boolean[ciudades.getSize()];
-//
-//        if (ciudadInicio != null) {
-//            dfsRecursivo(ciudadInicio, visitados, recorrido);
-//        }
-//
-//        return recorrido;
-//    }
-//    
-//    private void dfsRecursivo(Ciudad ciudad, boolean[] visitados, ListaSimple recorrido) {
-//        visitados[ciudad.getValue()] = true;
-//        recorrido.Append(ciudad.getValue());
-//
-//        for (int i=0; i< ciudad.getAristas().getSize();i++) {
-//            Arista arista = (Arista) ciudad.getAristas().GetData(i);
-//            Ciudad adyacente = arista.getDestino();
-//            if (!visitados[adyacente.getValue()]) {
-//                dfsRecursivo(adyacente, visitados, recorrido);
-//            }
-//        }
-//    }
-//    
-//    public int[] dijkstra(int inicio) {
-//        int[] distancias = new int[ciudades.getSize()];
-//        boolean[] visitados = new boolean[ciudades.getSize()];
-//
-//        for (int i = 0; i < ciudades.getSize(); i++) {
-//            distancias[i] = Integer.MAX_VALUE;
-//        }
-//
-//        distancias[inicio] = 0;
-//
-//        for (int i = 0; i < ciudades.getSize() - 1; i++) {
-//            int ciudadActual = obtenerCiudadConMenorDistancia(distancias, visitados);
-//            visitados[ciudadActual] = true;
-//            Ciudad c = (Ciudad) ciudades.GetData(ciudadActual);
-//            for (int j = 0; j < c.getAristas().getSize(); j++) {
-//                Arista arista = (Arista) c.getAristas().GetData(j);
-//                int ciudadDestino = arista.getDestino().getValue();
-//                if (!visitados[ciudadDestino] && distancias[ciudadActual] != Integer.MAX_VALUE &&
-//                        distancias[ciudadActual] + arista.getDistancia() < distancias[ciudadDestino]) {
-//                    distancias[ciudadDestino] = distancias[ciudadActual] + (int)arista.getDistancia();
-//                }
-//                
-//            }
-//        }
-//
-//        return distancias;
-//    }
-//    
-//    private int obtenerCiudadConMenorDistancia(int[] distancias, boolean[] visitados) {
-//        int minDistancia = Integer.MAX_VALUE;
-//        int minIndice = -1;
-//        for (int i = 0; i < distancias.length; i++) {
-//            if (!visitados[i] && distancias[i] <= minDistancia) {
-//                minDistancia = distancias[i];
-//                minIndice = i;
-//            }
-//        }
-//        return minIndice;
-//    }
 }
 

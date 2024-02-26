@@ -25,7 +25,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
     
     FuncionRellenarCombos re = new FuncionRellenarCombos();
     funcionesSistema funcsis = new funcionesSistema();
-    MostrarGrafo visualizar = new MostrarGrafo();
+    
     public NuevaSimulacion() {
         
         initComponents();
@@ -79,14 +79,15 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 32)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 32)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
         jLabel1.setText("NUEVA SIMULACIÓN");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
+        Historial.setEditable(false);
         Historial.setBackground(new java.awt.Color(234, 239, 233));
         Historial.setColumns(20);
-        Historial.setFont(new java.awt.Font("Thonburi", 0, 14)); // NOI18N
+        Historial.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         Historial.setForeground(new java.awt.Color(83, 26, 11));
         Historial.setRows(5);
         Historial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(83, 26, 11), java.awt.Color.white));
@@ -96,7 +97,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 320, 240));
 
         Beta.setBackground(new java.awt.Color(255, 255, 255));
-        Beta.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Beta.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Beta.setForeground(new java.awt.Color(83, 26, 11));
         Beta.setText("2");
         Beta.setToolTipText("Se muestra el recomendado.");
@@ -114,7 +115,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Beta, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 60, 30));
 
         Alfa.setBackground(new java.awt.Color(255, 255, 255));
-        Alfa.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Alfa.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Alfa.setForeground(new java.awt.Color(83, 26, 11));
         Alfa.setText("1");
         Alfa.setToolTipText("Se muestra el recomendado.");
@@ -132,7 +133,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Alfa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 60, 30));
 
         Rho.setBackground(new java.awt.Color(255, 255, 255));
-        Rho.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Rho.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Rho.setForeground(new java.awt.Color(83, 26, 11));
         Rho.setText("0.5");
         Rho.setToolTipText("<html>Se muestra el recomendado.<p>Este valor solo se encuentra en el intervalo [0,1)");
@@ -150,27 +151,27 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(Rho, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 60, 30));
 
         jLabel5.setBackground(new java.awt.Color(83, 26, 11));
-        jLabel5.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(83, 26, 11));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("<html>Grado de<p>evaporación:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 100, -1));
 
-        jLabel7.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(83, 26, 11));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("CICLOS:");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 60, 20));
 
-        jLabel4.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(83, 26, 11));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("<html>Visibilidad de<p>las ciudades:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 180, -1));
 
         jLabel2.setBackground(new java.awt.Color(241, 246, 240));
-        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VALORES REQUERIDOS:");
@@ -178,7 +179,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jLabel2.setOpaque(true);
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 200, 40));
 
-        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("<html>Importancia de<p>feromonas:");
@@ -200,14 +201,14 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 60, 20));
 
-        jLabel10.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(83, 26, 11));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("HORMIGAS:");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 80, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 90, -1));
 
-        jLabel11.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(83, 26, 11));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("CIUDADES");
@@ -222,7 +223,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 60, 20));
 
         CiudadFinal.setBackground(new java.awt.Color(83, 26, 11));
-        CiudadFinal.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CiudadFinal.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         CiudadFinal.setMaximumRowCount(20);
         CiudadFinal.setToolTipText("");
         CiudadFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +234,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(CiudadFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 60, -1));
 
         CiudadInicial.setBackground(new java.awt.Color(83, 26, 11));
-        CiudadInicial.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CiudadInicial.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         CiudadInicial.setMaximumRowCount(20);
         CiudadInicial.setToolTipText("");
         CiudadInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +245,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(CiudadInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 60, -1));
 
         CantidadCiclos.setBackground(new java.awt.Color(255, 255, 255));
-        CantidadCiclos.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CantidadCiclos.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         CantidadCiclos.setForeground(new java.awt.Color(83, 26, 11));
         CantidadCiclos.setText("3");
         CantidadCiclos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
@@ -261,7 +262,7 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(CantidadCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 60, -1));
 
         CantidadHormigas.setBackground(new java.awt.Color(255, 255, 255));
-        CantidadHormigas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CantidadHormigas.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         CantidadHormigas.setForeground(new java.awt.Color(83, 26, 11));
         CantidadHormigas.setText("3");
         CantidadHormigas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
@@ -286,34 +287,34 @@ public class NuevaSimulacion extends javax.swing.JFrame {
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 220, 350));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverActionPerformed(evt);
             }
         });
-        jPanel2.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, -1));
+        jPanel2.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, 30));
 
         Iniciar.setBackground(new java.awt.Color(83, 26, 11));
-        Iniciar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Iniciar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Iniciar.setText("Iniciar");
         Iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IniciarActionPerformed(evt);
             }
         });
-        jPanel2.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 100, -1));
+        jPanel2.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 100, 30));
 
         Reiniciar.setBackground(new java.awt.Color(83, 26, 11));
-        Reiniciar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Reiniciar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Reiniciar.setText("Reiniciar");
         Reiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReiniciarActionPerformed(evt);
             }
         });
-        jPanel2.add(Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 100, -1));
+        jPanel2.add(Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 100, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 370));
 
@@ -361,18 +362,10 @@ public class NuevaSimulacion extends javax.swing.JFrame {
                 System.out.println("");
                 sistema.getCaminoOptimo().Show();
                 System.out.println(sistema.getDistanciaOptima());
+                this.Historial.setText(sistema.finSimulacion());
+                MostrarGrafo visualizar = new MostrarGrafo();
+                visualizar.GrafoMostrar(sistema.getGrafo(),sistema.getCaminoOptimo());
                 
-                this.visualizar.GrafoMostrar(sistema.getGrafo(),sistema.getCaminoOptimo());
-                
-//                for (int i = 0; i < ciclos; i++) {
-//                    sistema.iniciarCiclo(i);
-//                    this.Historial.setText(sistema.finalizarCiclo(i));
-//                    JOptionPane.showMessageDialog(null, "Fin del ciclo");
-//                    this.Reiniciar.setEnabled(true);
-//                    this.Iniciar.setEnabled(false);
-//                    sistema.getCaminoOptimo().Show();
-//                    sistema.reiniciarHormigas();
-//                }
             }
             else{
                 JOptionPane.showMessageDialog(null, "La ciudad inicial y final deben ser distintas.");

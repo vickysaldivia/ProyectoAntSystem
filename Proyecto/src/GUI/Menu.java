@@ -5,7 +5,9 @@
 package GUI;
 
 import edd.Grafo;
+import edd.ListaSimple;
 import funciones.FuncionTXT;
+import funciones.MostrarGrafo;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -67,13 +69,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(241, 246, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
         jLabel1.setText("Disponibles:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 90, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarCiudad.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        EliminarCiudad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         EliminarCiudad.setText("Eliminar Ciudad");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,14 +85,14 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(EliminarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 130, -1));
 
         jLabel2.setBackground(new java.awt.Color(241, 246, 240));
-        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 50)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 50)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MENÚ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 220, 70));
 
         MostrarGrafo.setBackground(new java.awt.Color(83, 26, 11));
-        MostrarGrafo.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        MostrarGrafo.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,13 +114,13 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(PantallaCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 40, 30));
 
-        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setText("CIUDADES");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 130, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, -1));
 
         NuevaSimulacion.setBackground(new java.awt.Color(83, 26, 11));
-        NuevaSimulacion.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        NuevaSimulacion.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         NuevaSimulacion.setText("Nueva Simulación");
         NuevaSimulacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +133,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 280, 20));
 
         CargarGrafoPreexistente.setBackground(new java.awt.Color(83, 26, 11));
-        CargarGrafoPreexistente.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        CargarGrafoPreexistente.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         CargarGrafoPreexistente.setText("Cargar Grafo Preexistente");
         CargarGrafoPreexistente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +143,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(CargarGrafoPreexistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 240, 30));
 
         Guardar.setBackground(new java.awt.Color(83, 26, 11));
-        Guardar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Guardar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +153,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 100, -1));
 
         AgregarCiudad3.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarCiudad3.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        AgregarCiudad3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         AgregarCiudad3.setText("Agregar Ciudad");
         AgregarCiudad3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +181,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 30, -1));
 
         EliminarGrafoCargado.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarGrafoCargado.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        EliminarGrafoCargado.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         EliminarGrafoCargado.setText("Eliminar Grafo Cargado");
         EliminarGrafoCargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,11 +223,8 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(GrafoSimulacion.getCiudades().getSize() >=4){
 
-            MostrarGrafoInterfaz VentanaGrafo = new MostrarGrafoInterfaz(); 
-
-            this.setVisible(false);
-            VentanaGrafo.setLocationRelativeTo(null);
-            VentanaGrafo.setVisible(true);
+            MostrarGrafo mostrar = new MostrarGrafo();
+            mostrar.GrafoMostrar(GrafoSimulacion, new ListaSimple());
         }
         else{
             JOptionPane.showMessageDialog(null, "\n"+"Necesita al menos 4 ciudades para mostrar el Grafo" + "\n\n" + "Ciudades actuales: " + GrafoSimulacion.getCiudades().getSize());
@@ -290,10 +289,10 @@ public class Menu extends javax.swing.JFrame {
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
         if(GrafoSimulacion.getCiudades().getSize() >=4){
-            int confirmation = JOptionPane.showConfirmDialog(null, "Su simulación contiene " + GrafoSimulacion.getCiudades().getSize()+ " ciudades" + "\n" + "¿Desea guardar los cambios actuales? (No podrá agregar/eliminar más ciudades)", "CONFIRMACIÓN",JOptionPane.YES_NO_OPTION);
+            int confirmation = JOptionPane.showConfirmDialog(null, "Su simulación contiene " + GrafoSimulacion.getCiudades().getSize()+ " ciudades" + "\n" + "¿Desea guardar los cambios actuales?", "CONFIRMACIÓN",JOptionPane.YES_NO_OPTION);
             if(confirmation == JOptionPane.YES_OPTION){
                     try {
-                        StringTXT.StringTXT(GrafoSimulacion, "GrafoSimulacion.txt");
+                        StringTXT.String_TXT2(GrafoSimulacion.toString());
                         JOptionPane.showMessageDialog(null, "Guardado Exitoso.");
                         this.EliminarGrafoCargado.setEnabled(true);
                         this.NuevaSimulacion.setEnabled(true);
@@ -325,7 +324,7 @@ public class Menu extends javax.swing.JFrame {
             int confirmation = JOptionPane.showConfirmDialog(null, "Su simulación contiene " + GrafoSimulacion.getCiudades().getSize()+ " ciudades" + "\n" +
                 "¿Desea eliminar los datos actuales?", "CONFIRMACIÓN",JOptionPane.YES_NO_OPTION);
             if(confirmation == JOptionPane.YES_OPTION){
-               StringTXT.eliminarArchivo("GrafoSimulacion.txt");
+               StringTXT.eliminarArchivo();
                GrafoSimulacion.emptyGrafo();
                JOptionPane.showMessageDialog(null, "Datos eliminados exitosamente");
                this.PantallaCiudades.setText(String.valueOf(GrafoSimulacion.getCiudades().getSize()));
