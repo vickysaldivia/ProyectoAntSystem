@@ -19,12 +19,12 @@ public class EliminarCiudad extends javax.swing.JFrame {
      * Creates new form EliminarCiudad
      */
     FuncionRellenarCombos re = new FuncionRellenarCombos();
-    String NumCiudades = GrafoSimulacion.CiudadesToLista();
+    
     
     public EliminarCiudad() {
         initComponents();
+        String NumCiudades = GrafoSimulacion.CiudadesToLista();
         re.RellenarCombos(NumCiudades, CiudadesDisponibles);
-        GrafoSimulacion.printCiudades();
     }
 
     /**
@@ -52,21 +52,22 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(241, 246, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Seleccione la ciudad a eliminar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 390, 30));
 
-        jLabel5.setFont(new java.awt.Font("Thonburi", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(83, 26, 11));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("ELIMINAR CIUDAD");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 80));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 390, 80));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +77,8 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         EliminarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        EliminarCiudad.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        EliminarCiudad.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        EliminarCiudad.setForeground(new java.awt.Color(255, 255, 255));
         EliminarCiudad.setText("Eliminar");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,11 +90,13 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(241, 246, 240));
         jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(83, 26, 11), 2, true), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, new java.awt.Color(83, 26, 11), java.awt.Color.white)));
 
-        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setText("CIUDAD:");
 
         CiudadesDisponibles.setBackground(new java.awt.Color(83, 26, 11));
+        CiudadesDisponibles.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        CiudadesDisponibles.setForeground(new java.awt.Color(255, 255, 255));
         CiudadesDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CiudadesDisponiblesActionPerformed(evt);
@@ -108,7 +112,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CiudadesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +152,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
             if(GrafoSimulacion.getCiudad((int) CiudadesDisponibles.getSelectedItem()) !=  null){
                 int result = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea eliminar la ciudad seleccionada?\n" + GrafoSimulacion.stringCiudad((int) this.CiudadesDisponibles.getSelectedItem()), "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
                 if(result == JOptionPane.YES_OPTION){
+                    String NumCiudades = GrafoSimulacion.CiudadesToLista();
                     GrafoSimulacion.eliminarCiudad((int) this.CiudadesDisponibles.getSelectedItem());
                     
                     CiudadesDisponibles.removeAllItems();

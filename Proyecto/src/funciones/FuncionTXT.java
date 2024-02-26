@@ -6,9 +6,12 @@ package funciones;
 
 import edd.Grafo;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 
 /**
  *
@@ -18,15 +21,9 @@ public class FuncionTXT {
     
     FuncionStringGrafo func = new FuncionStringGrafo();
     
-    public void StringTXT(Grafo GrafoSimulacion, String FileName) throws IOException{
-        String Grafo = GrafoSimulacion.toString();
-        FileWriter writer = new FileWriter(FileName);
-        writer.write(Grafo);
-        writer.close();
-    }
     
-    public void eliminarArchivo(String FileName) {
-        File archivo = new File(FileName);
+    public void eliminarArchivo() {
+        File archivo = new File("test//GrafoSimulacion.txt");
 
         if (archivo.exists()) {
             archivo.delete();
@@ -34,8 +31,8 @@ public class FuncionTXT {
     }
     
     public Grafo cargaTXTAutomatica() throws IOException{
-        if(new File("GrafoSimulacion.txt").exists() && new File("GrafoSimulacion.txt").isFile()){
-            File fichero = new File("GrafoSimulacion.txt");
+        if(new File("test//GrafoSimulacion.txt").exists() && new File("test//GrafoSimulacion.txt").isFile()){
+            File fichero = new File("test//GrafoSimulacion.txt");
             try(FileReader FileReader = new FileReader(fichero)){
                 String string = "";
                 int value = FileReader.read();
@@ -50,8 +47,9 @@ public class FuncionTXT {
         return null;
     }
     
-    public boolean esArchivoTxt(String rutaArchivo) {
-        File archivo = new File(rutaArchivo);
-        return archivo.isFile() && archivo.getName().toLowerCase().endsWith(".txt");
+    public void String_TXT2(String Grafo) throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter("test//GrafoSimulacion.txt");
+        pw.print(Grafo);
+        pw.close();
     }
 }

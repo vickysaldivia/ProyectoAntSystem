@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author vickysaldivia
  */
 public class AgregarCiudad extends javax.swing.JFrame {
-    Menu VentanaMenu = new Menu();
+
     
     /**
      * Creates new form Agregar_Ciudad
@@ -66,19 +66,19 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(241, 246, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Thonburi", 1, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(83, 26, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("AGREGAR CIUDAD");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 300, -1));
 
-        jLabel1.setFont(new java.awt.Font("Thonburi", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(83, 26, 11));
         jLabel1.setText("DISTANCIA:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, 40));
 
         NombreCiudad.setBackground(new java.awt.Color(255, 255, 255));
-        NombreCiudad.setFont(new java.awt.Font("Helvetica", 1, 13)); // NOI18N
+        NombreCiudad.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         NombreCiudad.setForeground(new java.awt.Color(83, 26, 11));
         NombreCiudad.setToolTipText("Solo se permiten dígitos (0-9)");
         NombreCiudad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
@@ -99,14 +99,14 @@ public class AgregarCiudad extends javax.swing.JFrame {
         });
         jPanel1.add(NombreCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 70, 30));
 
-        jLabel3.setFont(new java.awt.Font("Thonburi", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(83, 26, 11));
         jLabel3.setText("NOMBRE (ORIGEN): ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
 
         ComboAristas.setBackground(new java.awt.Color(83, 26, 11));
-        ComboAristas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
-        ComboAristas.setForeground(new java.awt.Color(241, 246, 240));
+        ComboAristas.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ComboAristas.setForeground(new java.awt.Color(255, 255, 255));
         ComboAristas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboAristasActionPerformed(evt);
@@ -115,7 +115,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(ComboAristas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 100, 30));
 
         AgregarCiudad.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarCiudad.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        AgregarCiudad.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        AgregarCiudad.setForeground(new java.awt.Color(255, 255, 255));
         AgregarCiudad.setText("Agregar Ciudad");
         AgregarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +126,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(AgregarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         Volver.setBackground(new java.awt.Color(83, 26, 11));
-        Volver.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Volver.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Volver.setForeground(new java.awt.Color(255, 255, 255));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +137,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 80, 30));
 
         AgregarAristas.setBackground(new java.awt.Color(83, 26, 11));
-        AgregarAristas.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        AgregarAristas.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        AgregarAristas.setForeground(new java.awt.Color(255, 255, 255));
         AgregarAristas.setText("Agregar Arista");
         AgregarAristas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,13 +147,13 @@ public class AgregarCiudad extends javax.swing.JFrame {
         });
         jPanel1.add(AgregarAristas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 240, -1));
 
-        jLabel4.setFont(new java.awt.Font("Thonburi", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(83, 26, 11));
         jLabel4.setText("DESTINO:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 40));
 
         DistanciaTexto.setBackground(new java.awt.Color(255, 255, 255));
-        DistanciaTexto.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        DistanciaTexto.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         DistanciaTexto.setForeground(new java.awt.Color(83, 26, 11));
         DistanciaTexto.setToolTipText("Se permiten dígitos (0-9) y punto (.) para decimales.");
         DistanciaTexto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
@@ -171,7 +174,8 @@ public class AgregarCiudad extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 400, 20));
 
         Guardar.setBackground(new java.awt.Color(83, 26, 11));
-        Guardar.setFont(new java.awt.Font("Thonburi", 0, 13)); // NOI18N
+        Guardar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,10 +201,12 @@ public class AgregarCiudad extends javax.swing.JFrame {
             Ciudad newCiudad =  new Ciudad(numCiudad);
             
             if(GrafoSimulacion.getCiudad(numCiudad) == null){
+                
                 GrafoSimulacion.addCiudad(newCiudad);
                 this.ciudadesAgregadas.Append(newCiudad);
                 ComboAristas.removeAllItems();
                 re.RellenarCombos(GrafoSimulacion.CiudadesToLista(), ComboAristas);
+                
                 if(GrafoSimulacion.CiudadesToLista().length() >= 6){
                     this.AgregarAristas.setEnabled(true);
                     this.ComboAristas.setEnabled(true);
@@ -208,7 +214,7 @@ public class AgregarCiudad extends javax.swing.JFrame {
                 else{
                     JOptionPane.showMessageDialog(null, "Debe agregar al menos 4 ciudades.");
                 }
-                }
+            }
             else{
                 JOptionPane.showMessageDialog(null, "La ciudad ya se encuentra en la simulación.");
             }
@@ -223,9 +229,11 @@ public class AgregarCiudad extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = func.verificarAristas(ciudadesAgregadas);
         if(string == null){
+            Menu VentanaMenu = new Menu(); 
             this.setVisible(false);
             VentanaMenu.setLocationRelativeTo(null);
             VentanaMenu.setVisible(true);
+            
         }
         else{
             JOptionPane.showMessageDialog(null, "Todavía hay ciudades sin aristas." + string);
@@ -235,21 +243,26 @@ public class AgregarCiudad extends javax.swing.JFrame {
     private void AgregarAristasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAristasActionPerformed
         // TODO add your handling code here:
         if(!"".equals(DistanciaTexto.getText())){
+            
             int numCiudadOrigen = Integer.parseInt(NombreCiudad.getText());
-            String ciudad = ComboAristas.getSelectedItem().toString();
-            int numCiudadDestino = Integer.parseInt(ciudad);
+            int numCiudadDestino = Integer.parseInt(ComboAristas.getSelectedItem().toString());
             double distancia = Double.parseDouble(DistanciaTexto.getText());
             
             if(numCiudadOrigen != numCiudadDestino){
-                if(GrafoSimulacion.getCiudad(numCiudadOrigen).buscarArista(numCiudadDestino) == null){
+                Ciudad ciudadOrigen = GrafoSimulacion.getCiudad(numCiudadOrigen);
+                
+                if(ciudadOrigen.buscarArista(numCiudadDestino) == null){
+                    
                     GrafoSimulacion.addArista(numCiudadOrigen, numCiudadDestino, distancia);
                     this.DistanciaTexto.setText("");
                     this.Guardar.setEnabled(true);
                     JOptionPane.showMessageDialog(null, "Aristas agregadas.\n" + GrafoSimulacion.stringCiudad(numCiudadOrigen));
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Ya existe una arista entre ambas ciudades seleccionadas.");
                 }
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "La ciudad origen y destino NO pueden ser iguales");

@@ -10,11 +10,21 @@ import edd.Grafo;
 import edd.ListaSimple;
 
 /**
- *
- * @author vickysaldivia
- */
+* Clase para convertir una representación en forma de cadena de texto de un grafo en un
+* objeto Grafo.
+*
+* @author vickysaldivia
+*/
 public class FuncionStringGrafo {   
     
+    /**
+   * Convierte una representación en forma de cadena de texto de un grafo en un objeto
+   * Grafo.
+   *
+   * @param txt Una representación en forma de cadena de texto de un grafo.
+   * @return El objeto Grafo correspondiente a la representación en forma de cadena
+   *         de texto dada.
+   */
     public Grafo convertString(String txt){
         String[] lines = txt.split("\n");
         
@@ -55,6 +65,13 @@ public class FuncionStringGrafo {
         return newGrafo;
     }
     
+    /**
+   * Busca una ciudad en la lista de ciudades por su valor.
+   *
+   * @param numCiudad El valor de la ciudad a buscar.
+   * @param Ciudades La lista de ciudades donde buscar.
+   * @return La ciudad correspondiente al valor dado, o null si no se encuentra.
+   */
     public Ciudad searchVertice(int numCiudad, ListaSimple Ciudades){
         if(!Ciudades.isEmpty()){
             for (int i = 0; i < Ciudades.getSize(); i++) {
