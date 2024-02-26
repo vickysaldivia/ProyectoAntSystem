@@ -323,8 +323,10 @@ public class Sistema2 {
             this.setCaminoOptimo(hormiga.getCiudadesRecorridas());
         } else {
             if (hormiga.getDistanciaRecorrida() < this.distanciaOptima) {
+                if(hormiga.getCiudadActual().getValue() == this.ciudadFinal.getValue()){
                 this.setCaminoOptimo(hormiga.getCiudadesRecorridas());
                 this.setDistanciaOptima(hormiga.getDistanciaRecorrida());
+                }
             }
 
         }
